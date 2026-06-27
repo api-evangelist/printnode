@@ -1,0 +1,103 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: PrintNode
+providerId: printnode
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: true
+tags:
+- Printing
+- Cloud Printing
+- Remote Printing
+- Print Jobs
+- Hardware
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of PrintNode spend. PrintNode bills a fixed monthly or annual
+  subscription per plan tier, sized by included monthly print volume and number
+  of connected computers, plus metered overage charged per 1,000 prints. One
+  print equals one API request regardless of page count. Integrator plans add a
+  per-child-account charge. Standalone server deployments are negotiated.
+notes: >-
+  Per-plan rates and overage are subject to change; verify against the
+  PrintNode pricing page during reconciliation. Prices are available in USD,
+  EUR, and GBP.
+sources:
+- https://www.printnode.com/en/pricing
+- https://www.printnode.com/en/docs/api/curl
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: PrintNode
+serviceCategory: Printing and Output Management
+billingModel:
+  pricingCategory: Subscription with Usage Overage
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: PrintNode
+  ServiceCategory: Printing and Output Management
+  ProviderName: PrintNode
+  PublisherName: PrintNode
+  InvoiceIssuerName: PrintNode
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription with Usage Overage
+meters:
+- name: subscription_fee
+  description: Fixed monthly or annual subscription per plan tier.
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: prints
+  description: Print jobs submitted; one print equals one API request regardless of page count, counted against the plan allowance.
+  unit: prints
+  aggregation: sum
+  dimensions:
+  - account
+  - printer
+- name: overage_prints
+  description: Prints beyond the included monthly allowance, billed per 1,000 prints at the plan overage rate.
+  unit: prints
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: connected_computers
+  description: Computers connected to the account, capped by plan tier.
+  unit: computers
+  aggregation: max
+  dimensions:
+  - account
+- name: child_accounts
+  description: Child accounts managed under an Integrator plan, with per-account overage beyond the included count.
+  unit: accounts
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+principles:
+- name: Visibility
+  description: Track monthly print counts and connected-computer counts against the plan allowance via whoami and account state.
+- name: Allocation
+  description: Tag print jobs with the source field and, for Integrator accounts, attribute prints to child accounts and cost centers.
+- name: Optimization
+  description: Right-size the plan tier to actual print volume; consolidate computers; choose the tier whose overage rate best fits sustained volume.
+- name: Accountability
+  description: Assign owners per account or child account; review print volume and overage monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

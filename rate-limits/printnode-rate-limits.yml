@@ -1,0 +1,63 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: PrintNode
+providerId: printnode
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Printing
+- Cloud Printing
+- Remote Printing
+- Print Jobs
+- Hardware
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  PrintNode meters usage primarily by print volume, where one print equals one
+  API request regardless of page count, with monthly print allowances and
+  connected-computer counts set by plan. The API uses pagination to bound the
+  size of result sets (default 100 records per request, controllable via the
+  limit, after, and dir query parameters). Specific per-second or per-minute
+  request throttling thresholds are not publicly documented and are not
+  reconciled in this artifact.
+notes: >-
+  Verify any request-rate throttling thresholds and the monthly print
+  allowances and computer limits per plan against the PrintNode pricing and API
+  documentation during reconciliation.
+sources:
+- https://www.printnode.com/en/docs/api/curl
+- https://www.printnode.com/en/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Monthly Print Allowance
+  scope: account
+  metric: prints
+  limit: see plan
+  notes: One print equals one API request regardless of page count; monthly allowance varies by plan (50 free up to 200,000+).
+- name: Connected Computers
+  scope: account
+  metric: computers
+  limit: see plan
+  notes: Number of computers that may connect to the account, set by plan (1 on Lite up to unlimited on Premium).
+- name: Result Set Pagination
+  scope: request
+  metric: records
+  limit: 100
+  notes: Set endpoints return up to 100 records by default; control with limit, after, and dir query parameters.
+- name: Child Account Limit
+  scope: account
+  metric: accounts
+  limit: see plan
+  notes: Integrator plans cap the number of controllable child accounts (20 Standard, 200 Large) with per-account overage.
+policies:
+- name: Volume-Based Metering
+  description: Usage is metered per print (per API request) against a monthly plan allowance, with per-1,000-print overage charges.
+- name: Pagination
+  description: Clients should page through large result sets using the limit, after, and dir query parameters rather than requesting unbounded ranges.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

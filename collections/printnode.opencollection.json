@@ -1,0 +1,360 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiKey}}",
+      "password": ""
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check endpoint that confirms the API is reachable.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/ping"
+          },
+          "docs": "Health check endpoint that confirms the API is reachable."
+        },
+        {
+          "info": {
+            "name": "No-operation endpoint useful for testing authentication.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/noop"
+          },
+          "docs": "No-operation endpoint useful for testing authentication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the Account object for the currently authenticated account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/whoami"
+          },
+          "docs": "Returns the Account object for the currently authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create a child account (Integrator accounts only).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/account",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"Account\": {\n    \"firstname\": \"<string>\",\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"creatorRef\": \"<string>\"\n  },\n  \"ApiKeys\": [\"<string>\"]\n}"
+            }
+          },
+          "docs": "Create a child account (Integrator accounts only)."
+        },
+        {
+          "info": {
+            "name": "List the child accounts this Integrator account can control.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/account/controllable"
+          },
+          "docs": "List the child accounts this Integrator account can control."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an API key with the given description.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/account/apikey/:description"
+          },
+          "docs": "Create an API key with the given description."
+        },
+        {
+          "info": {
+            "name": "Delete the API key with the given description.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printnode.com/account/apikey/:description"
+          },
+          "docs": "Delete the API key with the given description."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Computers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all computers connected to the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computers"
+          },
+          "docs": "List all computers connected to the account."
+        },
+        {
+          "info": {
+            "name": "Return the computers matching the supplied computer set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computers/:computerSet"
+          },
+          "docs": "Return the computers matching the supplied computer set."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Printers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all printers attached to the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printers"
+          },
+          "docs": "List all printers attached to the account."
+        },
+        {
+          "info": {
+            "name": "Return the printers matching the supplied printer set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printers/:printerSet"
+          },
+          "docs": "Return the printers matching the supplied printer set."
+        },
+        {
+          "info": {
+            "name": "List printers attached to the given set of computers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computers/:computerSet/printers"
+          },
+          "docs": "List printers attached to the given set of computers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PrintJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List print jobs associated with the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printjobs"
+          },
+          "docs": "List print jobs associated with the account."
+        },
+        {
+          "info": {
+            "name": "Submit a print job to a printer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/printjobs",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"printerId\": 0,\n  \"title\": \"<string>\",\n  \"contentType\": \"pdf_uri\",\n  \"content\": \"<string>\",\n  \"source\": \"<string>\"\n}"
+            }
+          },
+          "docs": "Submit a print job to a printer."
+        },
+        {
+          "info": {
+            "name": "Return the print jobs matching the supplied print job set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printjobs/:printJobSet"
+          },
+          "docs": "Return the print jobs matching the supplied print job set."
+        },
+        {
+          "info": {
+            "name": "Return the state change history for print jobs on the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printjobs/states"
+          },
+          "docs": "Return the state change history for print jobs on the account."
+        },
+        {
+          "info": {
+            "name": "List the print jobs sent to the given set of printers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printers/:printerSet/printjobs"
+          },
+          "docs": "List the print jobs sent to the given set of printers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the scales connected to the given computer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computer/:computerId/scales"
+          },
+          "docs": "List the scales connected to the given computer."
+        },
+        {
+          "info": {
+            "name": "List scale measurements for a named device on a computer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computer/:computerId/scales/:deviceName"
+          },
+          "docs": "List scale measurements for a named device on a computer."
+        },
+        {
+          "info": {
+            "name": "Return a single scale measurement for a named device and number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computer/:computerId/scale/:deviceName/:deviceNumber"
+          },
+          "docs": "Return a single scale measurement for a named device and number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the webhooks registered on the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/webhook"
+          },
+          "docs": "View the webhooks registered on the account."
+        },
+        {
+          "info": {
+            "name": "Register a new webhook on the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/webhook",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"url\": \"<string>\",\n  \"enabled\": true\n}"
+            }
+          },
+          "docs": "Register a new webhook on the account."
+        },
+        {
+          "info": {
+            "name": "Modify an existing webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.printnode.com/webhook",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"id\": 0,\n  \"url\": \"<string>\",\n  \"enabled\": true\n}"
+            }
+          },
+          "docs": "Modify an existing webhook."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook from the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printnode.com/webhook"
+          },
+          "docs": "Delete a webhook from the account."
+        }
+      ]
+    }
+  ]
+}

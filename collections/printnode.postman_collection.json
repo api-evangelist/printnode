@@ -1,0 +1,273 @@
+{
+  "info": {
+    "_postman_id": "8f3c1d27-4a6b-4e58-9b21-7c0e5d9a1f42",
+    "name": "PrintNode API",
+    "description": "Cloud and remote printing API for PrintNode. Base URL https://api.printnode.com. Authentication is HTTP Basic with the API key as the username and an empty password.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.printnode.com" },
+    { "key": "apiKey", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Utility",
+      "item": [
+        {
+          "name": "Health check endpoint that confirms the API is reachable.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/ping", "host": ["{{baseUrl}}"], "path": ["ping"] }
+          }
+        },
+        {
+          "name": "No-operation endpoint useful for testing authentication.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/noop", "host": ["{{baseUrl}}"], "path": ["noop"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Returns the Account object for the currently authenticated account.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/whoami", "host": ["{{baseUrl}}"], "path": ["whoami"] }
+          }
+        },
+        {
+          "name": "Create a child account (Integrator accounts only).",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Account\": {\n    \"firstname\": \"<string>\",\n    \"lastname\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"creatorRef\": \"<string>\"\n  },\n  \"ApiKeys\": [\"<string>\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/account", "host": ["{{baseUrl}}"], "path": ["account"] }
+          }
+        },
+        {
+          "name": "List the child accounts this Integrator account can control.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/account/controllable", "host": ["{{baseUrl}}"], "path": ["account", "controllable"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API Keys",
+      "item": [
+        {
+          "name": "Create an API key with the given description.",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/account/apikey/:description", "host": ["{{baseUrl}}"], "path": ["account", "apikey", ":description"], "variable": [{ "key": "description", "value": "" }] }
+          }
+        },
+        {
+          "name": "Delete the API key with the given description.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/account/apikey/:description", "host": ["{{baseUrl}}"], "path": ["account", "apikey", ":description"], "variable": [{ "key": "description", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Computers",
+      "item": [
+        {
+          "name": "List all computers connected to the account.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/computers", "host": ["{{baseUrl}}"], "path": ["computers"] }
+          }
+        },
+        {
+          "name": "Return the computers matching the supplied computer set.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/computers/:computerSet", "host": ["{{baseUrl}}"], "path": ["computers", ":computerSet"], "variable": [{ "key": "computerSet", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Printers",
+      "item": [
+        {
+          "name": "List all printers attached to the account.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/printers", "host": ["{{baseUrl}}"], "path": ["printers"] }
+          }
+        },
+        {
+          "name": "Return the printers matching the supplied printer set.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/printers/:printerSet", "host": ["{{baseUrl}}"], "path": ["printers", ":printerSet"], "variable": [{ "key": "printerSet", "value": "" }] }
+          }
+        },
+        {
+          "name": "List printers attached to the given set of computers.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/computers/:computerSet/printers", "host": ["{{baseUrl}}"], "path": ["computers", ":computerSet", "printers"], "variable": [{ "key": "computerSet", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "PrintJobs",
+      "item": [
+        {
+          "name": "List print jobs associated with the account.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/printjobs", "host": ["{{baseUrl}}"], "path": ["printjobs"] }
+          }
+        },
+        {
+          "name": "Submit a print job to a printer.",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"printerId\": 0,\n  \"title\": \"<string>\",\n  \"contentType\": \"pdf_uri\",\n  \"content\": \"<string>\",\n  \"source\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/printjobs", "host": ["{{baseUrl}}"], "path": ["printjobs"] }
+          }
+        },
+        {
+          "name": "Return the print jobs matching the supplied print job set.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/printjobs/:printJobSet", "host": ["{{baseUrl}}"], "path": ["printjobs", ":printJobSet"], "variable": [{ "key": "printJobSet", "value": "" }] }
+          }
+        },
+        {
+          "name": "Return the state change history for print jobs on the account.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/printjobs/states", "host": ["{{baseUrl}}"], "path": ["printjobs", "states"] }
+          }
+        },
+        {
+          "name": "List the print jobs sent to the given set of printers.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/printers/:printerSet/printjobs", "host": ["{{baseUrl}}"], "path": ["printers", ":printerSet", "printjobs"], "variable": [{ "key": "printerSet", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scales",
+      "item": [
+        {
+          "name": "List the scales connected to the given computer.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/computer/:computerId/scales", "host": ["{{baseUrl}}"], "path": ["computer", ":computerId", "scales"], "variable": [{ "key": "computerId", "value": "" }] }
+          }
+        },
+        {
+          "name": "List scale measurements for a named device on a computer.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/computer/:computerId/scales/:deviceName", "host": ["{{baseUrl}}"], "path": ["computer", ":computerId", "scales", ":deviceName"], "variable": [{ "key": "computerId", "value": "" }, { "key": "deviceName", "value": "" }] }
+          }
+        },
+        {
+          "name": "Return a single scale measurement for a named device and number.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/computer/:computerId/scale/:deviceName/:deviceNumber", "host": ["{{baseUrl}}"], "path": ["computer", ":computerId", "scale", ":deviceName", ":deviceNumber"], "variable": [{ "key": "computerId", "value": "" }, { "key": "deviceName", "value": "" }, { "key": "deviceNumber", "value": "" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "View the webhooks registered on the account.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhook", "host": ["{{baseUrl}}"], "path": ["webhook"] }
+          }
+        },
+        {
+          "name": "Register a new webhook on the account.",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\",\n  \"enabled\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/webhook", "host": ["{{baseUrl}}"], "path": ["webhook"] }
+          }
+        },
+        {
+          "name": "Modify an existing webhook.",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"url\": \"<string>\",\n  \"enabled\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/webhook", "host": ["{{baseUrl}}"], "path": ["webhook"] }
+          }
+        },
+        {
+          "name": "Delete a webhook from the account.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhook", "host": ["{{baseUrl}}"], "path": ["webhook"] }
+          }
+        }
+      ]
+    }
+  ]
+}

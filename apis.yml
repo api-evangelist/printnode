@@ -1,0 +1,152 @@
+aid: printnode
+url: https://raw.githubusercontent.com/api-evangelist/printnode/refs/heads/main/apis.yml
+name: PrintNode
+kind: company
+description: PrintNode is a cloud and remote printing service that lets web and server
+  applications print to any physical printer through a lightweight client installed
+  on a remote computer. Its REST API at https://api.printnode.com covers accounts,
+  computers, printers, print jobs, scales, child-account/API-key management, and webhooks,
+  using HTTP Basic authentication with an API key.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Printing
+- Cloud Printing
+- Remote Printing
+- Print Jobs
+- Hardware
+created: '2026-06-25'
+modified: '2026-06-25'
+specificationVersion: '0.19'
+apis:
+- aid: printnode:computers
+  name: PrintNode Computers API
+  tags:
+  - Computers
+  - Clients
+  - Devices
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  properties:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+  - url: openapi/printnode-openapi.yml
+    type: OpenAPI
+  description: List and manage the computers connected to a PrintNode account, each
+    running the PrintNode Client that bridges the cloud API to locally attached printers
+    and devices.
+- aid: printnode:printers
+  name: PrintNode Printers API
+  tags:
+  - Printers
+  - Capabilities
+  - Devices
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  properties:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+  - url: openapi/printnode-openapi.yml
+    type: OpenAPI
+  description: Discover the printers attached to an account's computers, including
+    printer capabilities, state, and defaults, either across the whole account or
+    scoped to specific computers.
+- aid: printnode:printjobs
+  name: PrintNode PrintJobs API
+  tags:
+  - Print Jobs
+  - Printing
+  - PDF
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  properties:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+  - url: openapi/printnode-openapi.yml
+    type: OpenAPI
+  description: Submit print jobs to a printer from PDF or raw content (URI or base64),
+    list historical print jobs, inspect their states, and retrieve job state changes
+    across the account or per printer.
+- aid: printnode:scales
+  name: PrintNode Scales API
+  tags:
+  - Scales
+  - Weighing
+  - Hardware
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  properties:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+  - url: openapi/printnode-openapi.yml
+    type: OpenAPI
+  description: Read weight measurements from USB scales connected to a computer running
+    the PrintNode Client, supporting point-of-sale and shipping use cases alongside
+    printing.
+- aid: printnode:account-api-keys
+  name: PrintNode Account and API Keys API
+  tags:
+  - Account
+  - Child Accounts
+  - API Keys
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  properties:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+  - url: openapi/printnode-openapi.yml
+    type: OpenAPI
+  description: Inspect the authenticated account via whoami, and for Integrator accounts
+    create, modify, and delete child accounts along with their API keys and tags for
+    managed multi-tenant printing.
+- aid: printnode:webhooks
+  name: PrintNode Webhooks API
+  tags:
+  - Webhooks
+  - Notifications
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  properties:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+  - url: openapi/printnode-openapi.yml
+    type: OpenAPI
+  description: Register, view, modify, and delete webhooks that deliver event notifications
+    about account activity such as print job and printer state changes to a configured
+    HTTP endpoint.
+common:
+- type: GitHubOrganization
+  url: https://github.com/PrintNode
+- type: LinkedIn
+  url: https://www.linkedin.com/company/printnode
+- type: Website
+  url: https://www.printnode.com/
+- type: Documentation
+  url: https://www.printnode.com/en/docs/api/curl
+- type: Plans
+  url: plans/printnode-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/printnode-rate-limits.yml
+- type: FinOps
+  url: finops/printnode-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

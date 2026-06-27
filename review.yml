@@ -1,0 +1,82 @@
+aid: printnode
+name: PrintNode
+review:
+  question: Does PrintNode expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-25'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. PrintNode's only documented event-push
+    mechanism is outbound HTTP webhooks (POST callbacks to a customer-supplied
+    URL), which are modeled as REST operations in the OpenAPI document. No
+    Server-Sent Events (SSE) stream and no WebSocket surface is documented.
+findings:
+  summary: |
+    PrintNode does not publish a documented public WebSocket API. The PrintNode
+    platform exposes a REST (HTTPS) API under https://api.printnode.com using
+    HTTP Basic authentication with an API key. Asynchronous notifications about
+    account activity are delivered via outbound HTTP webhooks registered through
+    the /webhook endpoints, not over a client-facing WebSocket. The PrintNode
+    Client (installed on a remote computer) maintains its own persistent
+    connection to PrintNode's servers to relay print jobs to local printers, but
+    that internal client transport is not a documented public API surface for
+    application developers. No realtime, bidirectional ws:// or wss:// endpoint
+    is documented for computers, printers, print jobs, or scales.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.printnode.com
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP callbacks to a customer-supplied URL, registered via POST /webhook. Server-to-client push, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in PrintNode's API reference for any resource as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://api.printnode.com/whoami
+    - GET  https://api.printnode.com/computers
+    - GET  https://api.printnode.com/computers/{computerSet}
+    - GET  https://api.printnode.com/printers
+    - GET  https://api.printnode.com/printers/{printerSet}
+    - GET  https://api.printnode.com/computers/{computerSet}/printers
+    - POST https://api.printnode.com/printjobs
+    - GET  https://api.printnode.com/printjobs
+    - GET  https://api.printnode.com/printjobs/{printJobSet}
+    - GET  https://api.printnode.com/printjobs/states
+    - GET  https://api.printnode.com/printers/{printerSet}/printjobs
+    - GET  https://api.printnode.com/computer/{computerId}/scales
+    - GET  https://api.printnode.com/computer/{computerId}/scales/{deviceName}
+    - GET  https://api.printnode.com/computer/{computerId}/scale/{deviceName}/{deviceNumber}
+    - POST https://api.printnode.com/account
+    - GET  https://api.printnode.com/account/controllable
+    - POST https://api.printnode.com/account/apikey/{description}
+    - DELETE https://api.printnode.com/account/apikey/{description}
+    - GET  https://api.printnode.com/webhook
+    - POST https://api.printnode.com/webhook
+    - PATCH https://api.printnode.com/webhook
+    - DELETE https://api.printnode.com/webhook
+sources:
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: APIReference
+    note: All documented endpoints are HTTPS REST with HTTP Basic auth; no WebSocket mentioned.
+  - url: https://www.printnode.com/en/docs
+    type: Documentation
+    note: Describes the PrintNode Client relaying jobs to local printers; no public WebSocket API for developers.
+  - url: https://www.printnode.com/en/docs/api/curl
+    type: Documentation
+    note: Webhooks are outbound HTTP callbacks registered via /webhook, not a WebSocket transport.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists and no SSE stream is documented. The
+    only asynchronous mechanism is outbound HTTP webhooks, which are represented
+    as REST operations in the OpenAPI document, so no AsyncAPI artifact was
+    authored.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

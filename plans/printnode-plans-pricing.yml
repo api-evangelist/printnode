@@ -1,0 +1,363 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: PrintNode
+providerId: printnode
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: true
+tags:
+- Printing
+- Cloud Printing
+- Remote Printing
+- Print Jobs
+- Hardware
+- Plans
+description: >-
+  PrintNode prices by print volume and the number of connected computers,
+  across a free Lite tier and three paid Single Account tiers (Essential,
+  Standard, Premium) plus two Integrator tiers (Standard, Large) for managing
+  child accounts. One print equals one API request regardless of page count.
+  Plans are billed monthly or annually, with metered overage per 1,000 prints.
+  Standalone server deployments are available on request. The first month is
+  free with unlimited usage.
+notes: >-
+  Representative USD rates as published on the PrintNode pricing page; prices
+  are also offered in EUR and GBP. Verify the current tiers and overage rates
+  on the pricing page during reconciliation.
+sources:
+- https://www.printnode.com/en/pricing
+- https://www.printnode.com/en/docs/api/curl
+plans:
+- id: printnode-lite
+  name: Lite
+  type: free
+  description: >-
+    Free tier for low-volume usage with a single connected computer.
+  entries:
+  - label: Prints
+    name: prints
+    type: limit
+    metric: prints
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  - label: Computers
+    name: computers
+    type: limit
+    metric: computers
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: Computers API
+  - name: Printers API
+  - name: PrintJobs API
+- id: printnode-essential
+  name: Essential
+  type: subscription
+  description: >-
+    Entry paid tier for small applications, billed monthly with overage.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $9 per month
+    userMultiplied: false
+  - label: Included Prints
+    name: prints
+    type: limit
+    metric: prints
+    limit: 5000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Computers
+    name: computers
+    type: limit
+    metric: computers
+    limit: 3
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Overage Prints
+    name: overage_prints
+    type: usage
+    metric: prints
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000
+    price: $1.80 per 1,000 prints
+    userMultiplied: false
+  elements:
+  - name: Computers API
+  - name: Printers API
+  - name: PrintJobs API
+  - name: Scales API
+  - name: Webhooks API
+- id: printnode-standard
+  name: Standard
+  type: subscription
+  description: >-
+    Mid-volume paid tier billed monthly with lower per-print overage.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $29 per month
+    userMultiplied: false
+  - label: Included Prints
+    name: prints
+    type: limit
+    metric: prints
+    limit: 25000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Computers
+    name: computers
+    type: limit
+    metric: computers
+    limit: 5
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Overage Prints
+    name: overage_prints
+    type: usage
+    metric: prints
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000
+    price: $1.16 per 1,000 prints
+    userMultiplied: false
+  elements:
+  - name: Computers API
+  - name: Printers API
+  - name: PrintJobs API
+  - name: Scales API
+  - name: Webhooks API
+- id: printnode-premium
+  name: Premium
+  type: subscription
+  description: >-
+    High-volume paid tier with unlimited computers and the lowest overage rate.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $99 per month
+    userMultiplied: false
+  - label: Included Prints
+    name: prints
+    type: limit
+    metric: prints
+    limit: 200000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Computers
+    name: computers
+    type: limit
+    metric: computers
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: unlimited
+    userMultiplied: false
+  - label: Overage Prints
+    name: overage_prints
+    type: usage
+    metric: prints
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000
+    price: $0.49 per 1,000 prints
+    userMultiplied: false
+  elements:
+  - name: Computers API
+  - name: Printers API
+  - name: PrintJobs API
+  - name: Scales API
+  - name: Webhooks API
+- id: printnode-standard-integrator
+  name: Standard Integrator
+  type: subscription
+  description: >-
+    Integrator tier for managing child accounts via the API, billed monthly.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $60 per month
+    userMultiplied: false
+  - label: Included Prints
+    name: prints
+    type: limit
+    metric: prints
+    limit: 100000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Sub-Accounts
+    name: subaccounts
+    type: limit
+    metric: accounts
+    limit: 20
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Overage Sub-Accounts
+    name: overage_subaccounts
+    type: usage
+    metric: accounts
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $3.00 per account
+    userMultiplied: false
+  - label: Overage Prints
+    name: overage_prints
+    type: usage
+    metric: prints
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000
+    price: $0.60 per 1,000 prints
+    userMultiplied: false
+  elements:
+  - name: Account and API Keys API
+  - name: Computers API
+  - name: Printers API
+  - name: PrintJobs API
+  - name: Webhooks API
+- id: printnode-large-integrator
+  name: Large Integrator
+  type: subscription
+  description: >-
+    High-volume Integrator tier for large multi-tenant deployments.
+  entries:
+  - label: Subscription
+    name: subscription
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $500 per month
+    userMultiplied: false
+  - label: Included Prints
+    name: prints
+    type: limit
+    metric: prints
+    limit: 500000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Sub-Accounts
+    name: subaccounts
+    type: limit
+    metric: accounts
+    limit: 200
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Overage Sub-Accounts
+    name: overage_subaccounts
+    type: usage
+    metric: accounts
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $2.50 per account
+    userMultiplied: false
+  - label: Overage Prints
+    name: overage_prints
+    type: usage
+    metric: prints
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000
+    price: $0.50 per 1,000 prints
+    userMultiplied: false
+  elements:
+  - name: Account and API Keys API
+  - name: Computers API
+  - name: Printers API
+  - name: PrintJobs API
+  - name: Webhooks API
+- id: printnode-standalone-server
+  name: Standalone Server
+  type: enterprise
+  description: >-
+    On-premises standalone server deployment for businesses that want to keep
+    the PrintNode server infrastructure in-house. Contact PrintNode sales.
+  entries:
+  - label: Standalone Server Agreement
+    name: standalone
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Self-Hosted Deployment
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
