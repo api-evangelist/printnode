@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/printnode-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: apiKeyBasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave
+    the password empty. Integrator accounts may additionally authenticate on behalf of a child
+    account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef
+    header.
+  sources:
+  - openapi/printnode-openapi.yml

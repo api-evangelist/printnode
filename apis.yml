@@ -133,6 +133,10 @@ apis:
     about account activity such as print job and printer state changes to a configured
     HTTP endpoint.
 common:
+- type: DomainSecurity
+  url: security/printnode-domain-security.yml
+- type: Authentication
+  url: authentication/printnode-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/PrintNode
 - type: LinkedIn
