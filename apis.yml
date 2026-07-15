@@ -133,6 +133,8 @@ apis:
     about account activity such as print job and printer state changes to a configured
     HTTP endpoint.
 common:
+- type: AgenticAccess
+  url: agentic-access/printnode-agentic-access.yml
 - type: DomainSecurity
   url: security/printnode-domain-security.yml
 - type: Authentication
