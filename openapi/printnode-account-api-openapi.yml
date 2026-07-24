@@ -1,0 +1,188 @@
+openapi: 3.0.1
+info:
+  title: PrintNode Account API
+  description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
+  termsOfService: https://www.printnode.com/en/terms
+  contact:
+    name: PrintNode Support
+    url: https://www.printnode.com/en/contact
+  version: '1.0'
+servers:
+- url: https://api.printnode.com
+security:
+- apiKeyBasicAuth: []
+tags:
+- name: Account
+paths:
+  /whoami:
+    get:
+      operationId: whoAmI
+      tags:
+      - Account
+      summary: Returns the Account object for the currently authenticated account.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+  /account:
+    post:
+      operationId: createAccount
+      tags:
+      - Account
+      summary: Create a child account (Integrator accounts only).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+      responses:
+        '201':
+          description: Created
+    patch:
+      operationId: modifyAccount
+      tags:
+      - Account
+      summary: Modify the authenticated or controlled account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+    delete:
+      operationId: deleteAccount
+      tags:
+      - Account
+      summary: Delete the controlled child account.
+      responses:
+        '200':
+          description: OK
+  /account/controllable:
+    get:
+      operationId: getControllableAccounts
+      tags:
+      - Account
+      summary: List the child accounts this Integrator account can control.
+      responses:
+        '200':
+          description: OK
+  /account/tag/{name}:
+    get:
+      operationId: getAccountTag
+      tags:
+      - Account
+      summary: View a named tag stored against the account.
+      parameters:
+      - $ref: '#/components/parameters/TagName'
+      responses:
+        '200':
+          description: OK
+    post:
+      operationId: setAccountTag
+      tags:
+      - Account
+      summary: Create or update a named tag stored against the account.
+      parameters:
+      - $ref: '#/components/parameters/TagName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+    delete:
+      operationId: deleteAccountTag
+      tags:
+      - Account
+      summary: Delete a named tag stored against the account.
+      parameters:
+      - $ref: '#/components/parameters/TagName'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique account identifier.
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        canCreateSubAccounts:
+          type: boolean
+        creatorEmail:
+          type: string
+          nullable: true
+        creatorRef:
+          type: string
+          nullable: true
+        credits:
+          type: integer
+          nullable: true
+        numComputers:
+          type: integer
+        totalPrints:
+          type: integer
+        versions:
+          type: array
+          items:
+            type: string
+        connected:
+          type: array
+          items:
+            type: integer
+        permissions:
+          type: array
+          items:
+            type: string
+    CreateAccountRequest:
+      type: object
+      properties:
+        Account:
+          type: object
+          properties:
+            firstname:
+              type: string
+            lastname:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+            creatorRef:
+              type: string
+        ApiKeys:
+          type: array
+          items:
+            type: string
+        Tags:
+          type: object
+  parameters:
+    TagName:
+      name: name
+      in: path
+      description: The name of the account tag.
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyBasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave the password empty. Integrator accounts may additionally authenticate on behalf of a child account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef header.

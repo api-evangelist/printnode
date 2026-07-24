@@ -1,0 +1,132 @@
+openapi: 3.0.1
+info:
+  title: PrintNode Account Scales API
+  description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
+  termsOfService: https://www.printnode.com/en/terms
+  contact:
+    name: PrintNode Support
+    url: https://www.printnode.com/en/contact
+  version: '1.0'
+servers:
+- url: https://api.printnode.com
+security:
+- apiKeyBasicAuth: []
+tags:
+- name: Scales
+paths:
+  /computer/{computerId}/scales:
+    get:
+      operationId: getScales
+      tags:
+      - Scales
+      summary: List the scales connected to the given computer.
+      parameters:
+      - $ref: '#/components/parameters/ComputerId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Scale'
+  /computer/{computerId}/scales/{deviceName}:
+    get:
+      operationId: getScalesByDeviceName
+      tags:
+      - Scales
+      summary: List scale measurements for a named device on a computer.
+      parameters:
+      - $ref: '#/components/parameters/ComputerId'
+      - $ref: '#/components/parameters/DeviceName'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Scale'
+  /computer/{computerId}/scale/{deviceName}/{deviceNumber}:
+    get:
+      operationId: getScale
+      tags:
+      - Scales
+      summary: Return a single scale measurement for a named device and number.
+      parameters:
+      - $ref: '#/components/parameters/ComputerId'
+      - $ref: '#/components/parameters/DeviceName'
+      - $ref: '#/components/parameters/DeviceNumber'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scale'
+components:
+  schemas:
+    Scale:
+      type: object
+      properties:
+        mass:
+          type: array
+          items:
+            type: integer
+            nullable: true
+          description: Measured mass as [grams, micrograms].
+        deviceName:
+          type: string
+        deviceNum:
+          type: integer
+        computerId:
+          type: integer
+        vendor:
+          type: string
+          nullable: true
+        product:
+          type: string
+          nullable: true
+        count:
+          type: integer
+        measurement:
+          type: object
+          nullable: true
+        clientReportedCreateTimestamp:
+          type: string
+          format: date-time
+        ntpOffset:
+          type: integer
+          nullable: true
+        ageOfData:
+          type: integer
+          nullable: true
+  parameters:
+    DeviceNumber:
+      name: deviceNumber
+      in: path
+      description: The device number of a connected scale.
+      required: true
+      schema:
+        type: integer
+    DeviceName:
+      name: deviceName
+      in: path
+      description: The device name of a connected scale.
+      required: true
+      schema:
+        type: string
+    ComputerId:
+      name: computerId
+      in: path
+      description: The id of a single computer.
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    apiKeyBasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave the password empty. Integrator accounts may additionally authenticate on behalf of a child account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef header.

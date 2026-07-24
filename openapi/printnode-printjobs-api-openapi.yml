@@ -1,0 +1,255 @@
+openapi: 3.0.1
+info:
+  title: PrintNode Account PrintJobs API
+  description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
+  termsOfService: https://www.printnode.com/en/terms
+  contact:
+    name: PrintNode Support
+    url: https://www.printnode.com/en/contact
+  version: '1.0'
+servers:
+- url: https://api.printnode.com
+security:
+- apiKeyBasicAuth: []
+tags:
+- name: PrintJobs
+paths:
+  /printjobs:
+    get:
+      operationId: getPrintJobs
+      tags:
+      - PrintJobs
+      summary: List print jobs associated with the account.
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/After'
+      - $ref: '#/components/parameters/Dir'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintJob'
+    post:
+      operationId: createPrintJob
+      tags:
+      - PrintJobs
+      summary: Submit a print job to a printer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePrintJobRequest'
+      responses:
+        '201':
+          description: Created. Returns the new print job id.
+          content:
+            application/json:
+              schema:
+                type: integer
+  /printjobs/{printJobSet}:
+    get:
+      operationId: getPrintJobSet
+      tags:
+      - PrintJobs
+      summary: Return the print jobs matching the supplied print job set.
+      parameters:
+      - $ref: '#/components/parameters/PrintJobSet'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintJob'
+  /printjobs/states:
+    get:
+      operationId: getPrintJobStates
+      tags:
+      - PrintJobs
+      summary: Return the state change history for print jobs on the account.
+      responses:
+        '200':
+          description: OK
+  /printers/{printerSet}/printjobs:
+    get:
+      operationId: getPrintJobsByPrinter
+      tags:
+      - PrintJobs
+      summary: List the print jobs sent to the given set of printers.
+      parameters:
+      - $ref: '#/components/parameters/PrinterSet'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintJob'
+components:
+  parameters:
+    Dir:
+      name: dir
+      in: query
+      description: Ordering of returned records, asc or desc. Default is desc.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+    PrinterSet:
+      name: printerSet
+      in: path
+      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of rows returned. Default is 100.
+      required: false
+      schema:
+        type: integer
+        default: 100
+    PrintJobSet:
+      name: printJobSet
+      in: path
+      description: A set of print job ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
+      schema:
+        type: string
+    After:
+      name: after
+      in: query
+      description: Return records whose id is after this value, for pagination.
+      required: false
+      schema:
+        type: integer
+  schemas:
+    CreatePrintJobRequest:
+      type: object
+      required:
+      - printerId
+      - contentType
+      - content
+      properties:
+        printerId:
+          type: integer
+          description: The id of the target printer.
+        title:
+          type: string
+          description: Title displayed in the print queue.
+        contentType:
+          type: string
+          description: The content encoding of the job.
+          enum:
+          - pdf_uri
+          - pdf_base64
+          - raw_uri
+          - raw_base64
+        content:
+          type: string
+          description: A URI or base64-encoded payload depending on contentType.
+        source:
+          type: string
+          description: Free-text description of the job origin.
+        options:
+          type: object
+          description: Printer options such as copies, dpi, paper, fit_to_page.
+        expireAfter:
+          type: integer
+          description: Retention period in seconds. Default 1209600.
+        qty:
+          type: integer
+          description: Number of times to deliver the job. Default 1.
+        authentication:
+          type: object
+          description: Optional HTTP credentials for fetching a content URI.
+    Computer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        inet:
+          type: string
+          nullable: true
+        inet6:
+          type: string
+          nullable: true
+        hostname:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        jre:
+          type: string
+          nullable: true
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          description: Connection state, e.g. connected or disconnected.
+    Printer:
+      type: object
+      properties:
+        id:
+          type: integer
+        computer:
+          $ref: '#/components/schemas/Computer'
+        name:
+          type: string
+        description:
+          type: string
+        capabilities:
+          type: object
+          nullable: true
+        default:
+          type: boolean
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          description: Printer state, e.g. online, offline or deleted.
+    PrintJob:
+      type: object
+      properties:
+        id:
+          type: integer
+        printer:
+          $ref: '#/components/schemas/Printer'
+        title:
+          type: string
+        contentType:
+          type: string
+        source:
+          type: string
+        expireAt:
+          type: string
+          format: date-time
+          nullable: true
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+  securitySchemes:
+    apiKeyBasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave the password empty. Integrator accounts may additionally authenticate on behalf of a child account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef header.

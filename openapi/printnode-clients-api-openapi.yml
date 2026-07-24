@@ -1,0 +1,31 @@
+openapi: 3.0.1
+info:
+  title: PrintNode Account Clients API
+  description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
+  termsOfService: https://www.printnode.com/en/terms
+  contact:
+    name: PrintNode Support
+    url: https://www.printnode.com/en/contact
+  version: '1.0'
+servers:
+- url: https://api.printnode.com
+security:
+- apiKeyBasicAuth: []
+tags:
+- name: Clients
+paths:
+  /download/clients:
+    get:
+      operationId: getClientDownloads
+      tags:
+      - Clients
+      summary: List the available PrintNode Client download versions.
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    apiKeyBasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave the password empty. Integrator accounts may additionally authenticate on behalf of a child account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef header.

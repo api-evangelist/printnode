@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: PrintNode Account Webhooks API
+  description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
+  termsOfService: https://www.printnode.com/en/terms
+  contact:
+    name: PrintNode Support
+    url: https://www.printnode.com/en/contact
+  version: '1.0'
+servers:
+- url: https://api.printnode.com
+security:
+- apiKeyBasicAuth: []
+tags:
+- name: Webhooks
+paths:
+  /webhook:
+    get:
+      operationId: getWebhooks
+      tags:
+      - Webhooks
+      summary: View the webhooks registered on the account.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      summary: Register a new webhook on the account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '201':
+          description: Created
+    patch:
+      operationId: modifyWebhook
+      tags:
+      - Webhooks
+      summary: Modify an existing webhook.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '200':
+          description: OK
+    delete:
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      summary: Delete a webhook from the account.
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+          description: The HTTPS endpoint that receives event notifications.
+        enabled:
+          type: boolean
+  securitySchemes:
+    apiKeyBasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave the password empty. Integrator accounts may additionally authenticate on behalf of a child account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef header.

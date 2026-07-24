@@ -1,0 +1,167 @@
+openapi: 3.0.1
+info:
+  title: PrintNode Account Printers API
+  description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
+  termsOfService: https://www.printnode.com/en/terms
+  contact:
+    name: PrintNode Support
+    url: https://www.printnode.com/en/contact
+  version: '1.0'
+servers:
+- url: https://api.printnode.com
+security:
+- apiKeyBasicAuth: []
+tags:
+- name: Printers
+paths:
+  /printers:
+    get:
+      operationId: getPrinters
+      tags:
+      - Printers
+      summary: List all printers attached to the account.
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/After'
+      - $ref: '#/components/parameters/Dir'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Printer'
+  /printers/{printerSet}:
+    get:
+      operationId: getPrinterSet
+      tags:
+      - Printers
+      summary: Return the printers matching the supplied printer set.
+      parameters:
+      - $ref: '#/components/parameters/PrinterSet'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Printer'
+  /computers/{computerSet}/printers:
+    get:
+      operationId: getPrintersByComputer
+      tags:
+      - Printers
+      summary: List printers attached to the given set of computers.
+      parameters:
+      - $ref: '#/components/parameters/ComputerSet'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Printer'
+components:
+  parameters:
+    Dir:
+      name: dir
+      in: query
+      description: Ordering of returned records, asc or desc. Default is desc.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+    PrinterSet:
+      name: printerSet
+      in: path
+      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of rows returned. Default is 100.
+      required: false
+      schema:
+        type: integer
+        default: 100
+    After:
+      name: after
+      in: query
+      description: Return records whose id is after this value, for pagination.
+      required: false
+      schema:
+        type: integer
+    ComputerSet:
+      name: computerSet
+      in: path
+      description: A set of computer ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
+      schema:
+        type: string
+  schemas:
+    Computer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        inet:
+          type: string
+          nullable: true
+        inet6:
+          type: string
+          nullable: true
+        hostname:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+        jre:
+          type: string
+          nullable: true
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          description: Connection state, e.g. connected or disconnected.
+    Printer:
+      type: object
+      properties:
+        id:
+          type: integer
+        computer:
+          $ref: '#/components/schemas/Computer'
+        name:
+          type: string
+        description:
+          type: string
+        capabilities:
+          type: object
+          nullable: true
+        default:
+          type: boolean
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          description: Printer state, e.g. online, offline or deleted.
+  securitySchemes:
+    apiKeyBasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Supply the PrintNode API key as the username and leave the password empty. Integrator accounts may additionally authenticate on behalf of a child account using the X-Child-Account-By-Id, X-Child-Account-By-Email, or X-Child-Account-By-CreatorRef header.
