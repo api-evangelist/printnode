@@ -1,0 +1,30 @@
+{
+  "provider": "printnode",
+  "sources": [
+    "printnode-account-api-openapi.yml",
+    "printnode-api-keys-api-openapi.yml",
+    "printnode-clients-api-openapi.yml",
+    "printnode-computers-api-openapi.yml",
+    "printnode-printers-api-openapi.yml",
+    "printnode-printjobs-api-openapi.yml",
+    "printnode-scales-api-openapi.yml",
+    "printnode-utility-api-openapi.yml",
+    "printnode-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "printnode-account-api-openapi.yml",
+    "printnode-api-keys-api-openapi.yml",
+    "printnode-clients-api-openapi.yml",
+    "printnode-computers-api-openapi.yml",
+    "printnode-printers-api-openapi.yml",
+    "printnode-printjobs-api-openapi.yml",
+    "printnode-scales-api-openapi.yml",
+    "printnode-utility-api-openapi.yml",
+    "printnode-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
