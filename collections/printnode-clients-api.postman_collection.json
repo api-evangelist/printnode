@@ -1,0 +1,112 @@
+{
+  "item": [
+    {
+      "id": "89059cde-4121-430c-bf27-ecf351510038",
+      "name": "Clients",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b214330b-1127-4ce3-8b71-196eeb933b4c",
+          "name": "List the available PrintNode Client download versions.",
+          "request": {
+            "name": "List the available PrintNode Client download versions.",
+            "description": {},
+            "url": {
+              "path": [
+                "download",
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccbdecff-fc26-47bc-a3a3-9be0c16d9d4f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printnode.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c6f1114b-72b8-4df2-9750-cf75b9d5e31b",
+    "name": "PrintNode Account Clients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.\n\nContact Support:\n Name: PrintNode Support",
+      "type": "text/plain"
+    }
+  }
+}

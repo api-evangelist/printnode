@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View the webhooks registered on the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/webhook"
+          },
+          "docs": "View the webhooks registered on the account."
+        },
+        {
+          "info": {
+            "name": "Register a new webhook on the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new webhook on the account."
+        },
+        {
+          "info": {
+            "name": "Modify an existing webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.printnode.com/webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing webhook."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook from the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printnode.com/webhook"
+          },
+          "docs": "Delete a webhook from the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

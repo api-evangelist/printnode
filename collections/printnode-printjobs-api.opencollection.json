@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account PrintJobs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PrintJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List print jobs associated with the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printjobs",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows returned. Default is 100."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Return records whose id is after this value, for pagination."
+              },
+              {
+                "name": "dir",
+                "value": "",
+                "type": "query",
+                "description": "Ordering of returned records, asc or desc. Default is desc."
+              }
+            ]
+          },
+          "docs": "List print jobs associated with the account."
+        },
+        {
+          "info": {
+            "name": "Submit a print job to a printer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/printjobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a print job to a printer."
+        },
+        {
+          "info": {
+            "name": "Return the print jobs matching the supplied print job set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printjobs/:printJobSet",
+            "params": [
+              {
+                "name": "printJobSet",
+                "value": "",
+                "type": "path",
+                "description": "A set of print job ids, e.g. 123 or 123,456 or a range 100-200."
+              }
+            ]
+          },
+          "docs": "Return the print jobs matching the supplied print job set."
+        },
+        {
+          "info": {
+            "name": "Return the state change history for print jobs on the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printjobs/states"
+          },
+          "docs": "Return the state change history for print jobs on the account."
+        },
+        {
+          "info": {
+            "name": "List the print jobs sent to the given set of printers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printers/:printerSet/printjobs",
+            "params": [
+              {
+                "name": "printerSet",
+                "value": "",
+                "type": "path",
+                "description": "A set of printer ids, e.g. 123 or 123,456 or a range 100-200."
+              }
+            ]
+          },
+          "docs": "List the print jobs sent to the given set of printers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

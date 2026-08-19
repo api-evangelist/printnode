@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns the Account object for the currently authenticated account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/whoami"
+          },
+          "docs": "Returns the Account object for the currently authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create a child account (Integrator accounts only).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a child account (Integrator accounts only)."
+        },
+        {
+          "info": {
+            "name": "Modify the authenticated or controlled account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.printnode.com/account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify the authenticated or controlled account."
+        },
+        {
+          "info": {
+            "name": "Delete the controlled child account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printnode.com/account"
+          },
+          "docs": "Delete the controlled child account."
+        },
+        {
+          "info": {
+            "name": "List the child accounts this Integrator account can control.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/account/controllable"
+          },
+          "docs": "List the child accounts this Integrator account can control."
+        },
+        {
+          "info": {
+            "name": "View a named tag stored against the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/account/tag/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the account tag."
+              }
+            ]
+          },
+          "docs": "View a named tag stored against the account."
+        },
+        {
+          "info": {
+            "name": "Create or update a named tag stored against the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/account/tag/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the account tag."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a named tag stored against the account."
+        },
+        {
+          "info": {
+            "name": "Delete a named tag stored against the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printnode.com/account/tag/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the account tag."
+              }
+            ]
+          },
+          "docs": "Delete a named tag stored against the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

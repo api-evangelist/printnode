@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account Printers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Printers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all printers attached to the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows returned. Default is 100."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Return records whose id is after this value, for pagination."
+              },
+              {
+                "name": "dir",
+                "value": "",
+                "type": "query",
+                "description": "Ordering of returned records, asc or desc. Default is desc."
+              }
+            ]
+          },
+          "docs": "List all printers attached to the account."
+        },
+        {
+          "info": {
+            "name": "Return the printers matching the supplied printer set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/printers/:printerSet",
+            "params": [
+              {
+                "name": "printerSet",
+                "value": "",
+                "type": "path",
+                "description": "A set of printer ids, e.g. 123 or 123,456 or a range 100-200."
+              }
+            ]
+          },
+          "docs": "Return the printers matching the supplied printer set."
+        },
+        {
+          "info": {
+            "name": "List printers attached to the given set of computers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computers/:computerSet/printers",
+            "params": [
+              {
+                "name": "computerSet",
+                "value": "",
+                "type": "path",
+                "description": "A set of computer ids, e.g. 123 or 123,456 or a range 100-200."
+              }
+            ]
+          },
+          "docs": "List printers attached to the given set of computers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

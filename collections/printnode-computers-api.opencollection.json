@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account Computers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Computers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all computers connected to the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows returned. Default is 100."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Return records whose id is after this value, for pagination."
+              },
+              {
+                "name": "dir",
+                "value": "",
+                "type": "query",
+                "description": "Ordering of returned records, asc or desc. Default is desc."
+              }
+            ]
+          },
+          "docs": "List all computers connected to the account."
+        },
+        {
+          "info": {
+            "name": "Return the computers matching the supplied computer set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computers/:computerSet",
+            "params": [
+              {
+                "name": "computerSet",
+                "value": "",
+                "type": "path",
+                "description": "A set of computer ids, e.g. 123 or 123,456 or a range 100-200."
+              }
+            ]
+          },
+          "docs": "Return the computers matching the supplied computer set."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account Utility API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check endpoint that confirms the API is reachable.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/ping"
+          },
+          "docs": "Health check endpoint that confirms the API is reachable."
+        },
+        {
+          "info": {
+            "name": "No-operation endpoint useful for testing authentication.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/noop"
+          },
+          "docs": "No-operation endpoint useful for testing authentication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

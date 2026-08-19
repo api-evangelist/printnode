@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account Scales API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the scales connected to the given computer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computer/:computerId/scales",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "The id of a single computer."
+              }
+            ]
+          },
+          "docs": "List the scales connected to the given computer."
+        },
+        {
+          "info": {
+            "name": "List scale measurements for a named device on a computer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computer/:computerId/scales/:deviceName",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "The id of a single computer."
+              },
+              {
+                "name": "deviceName",
+                "value": "",
+                "type": "path",
+                "description": "The device name of a connected scale."
+              }
+            ]
+          },
+          "docs": "List scale measurements for a named device on a computer."
+        },
+        {
+          "info": {
+            "name": "Return a single scale measurement for a named device and number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/computer/:computerId/scale/:deviceName/:deviceNumber",
+            "params": [
+              {
+                "name": "computerId",
+                "value": "",
+                "type": "path",
+                "description": "The id of a single computer."
+              },
+              {
+                "name": "deviceName",
+                "value": "",
+                "type": "path",
+                "description": "The device name of a connected scale."
+              },
+              {
+                "name": "deviceNumber",
+                "value": "",
+                "type": "path",
+                "description": "The device number of a connected scale."
+              }
+            ]
+          },
+          "docs": "Return a single scale measurement for a named device and number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

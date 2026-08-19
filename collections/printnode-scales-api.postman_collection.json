@@ -1,0 +1,378 @@
+{
+  "item": [
+    {
+      "id": "373b2041-d23d-42bd-9186-69586b36ade3",
+      "name": "Scales",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5c503e3-b083-4625-acd6-2b7d06c2f0b3",
+          "name": "List the scales connected to the given computer.",
+          "request": {
+            "name": "List the scales connected to the given computer.",
+            "description": {},
+            "url": {
+              "path": [
+                "computer",
+                ":computerId",
+                "scales"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "computerId",
+                  "description": "(Required) The id of a single computer."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a35ce363-6ca0-4ff7-880c-e432d95bfaf3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computer",
+                    ":computerId",
+                    "scales"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "computerId",
+                      "description": "(Required) The id of a single computer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"mass\": [\n      915,\n      1743\n    ],\n    \"deviceName\": \"string\",\n    \"deviceNum\": 4505,\n    \"computerId\": 3019,\n    \"vendor\": \"string\",\n    \"product\": \"string\",\n    \"count\": 3833,\n    \"measurement\": {},\n    \"clientReportedCreateTimestamp\": \"1977-08-13T08:31:09.210Z\",\n    \"ntpOffset\": 9056,\n    \"ageOfData\": 7700\n  },\n  {\n    \"mass\": [\n      405,\n      839\n    ],\n    \"deviceName\": \"string\",\n    \"deviceNum\": 2941,\n    \"computerId\": 7574,\n    \"vendor\": \"string\",\n    \"product\": \"string\",\n    \"count\": 6879,\n    \"measurement\": {},\n    \"clientReportedCreateTimestamp\": \"2016-01-09T00:35:09.296Z\",\n    \"ntpOffset\": 6486,\n    \"ageOfData\": 272\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "730fba4c-e794-44da-86bd-6178766a8e2d",
+          "name": "List scale measurements for a named device on a computer.",
+          "request": {
+            "name": "List scale measurements for a named device on a computer.",
+            "description": {},
+            "url": {
+              "path": [
+                "computer",
+                ":computerId",
+                "scales",
+                ":deviceName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "computerId",
+                  "description": "(Required) The id of a single computer."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceName",
+                  "description": "(Required) The device name of a connected scale."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37b97efb-a1e2-4f39-956d-3f2df321d76e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computer",
+                    ":computerId",
+                    "scales",
+                    ":deviceName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "computerId",
+                      "description": "(Required) The id of a single computer."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceName",
+                      "description": "(Required) The device name of a connected scale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"mass\": [\n      7570,\n      1560\n    ],\n    \"deviceName\": \"string\",\n    \"deviceNum\": 6703,\n    \"computerId\": 4327,\n    \"vendor\": \"string\",\n    \"product\": \"string\",\n    \"count\": 6353,\n    \"measurement\": {},\n    \"clientReportedCreateTimestamp\": \"1998-07-13T14:40:54.036Z\",\n    \"ntpOffset\": 9562,\n    \"ageOfData\": 8102\n  },\n  {\n    \"mass\": [\n      3842,\n      465\n    ],\n    \"deviceName\": \"string\",\n    \"deviceNum\": 2673,\n    \"computerId\": 2768,\n    \"vendor\": \"string\",\n    \"product\": \"string\",\n    \"count\": 1898,\n    \"measurement\": {},\n    \"clientReportedCreateTimestamp\": \"2020-08-22T02:32:07.332Z\",\n    \"ntpOffset\": 7849,\n    \"ageOfData\": 9477\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f182e61f-b4de-4261-8669-2b9e8cb701c3",
+          "name": "Return a single scale measurement for a named device and number.",
+          "request": {
+            "name": "Return a single scale measurement for a named device and number.",
+            "description": {},
+            "url": {
+              "path": [
+                "computer",
+                ":computerId",
+                "scale",
+                ":deviceName",
+                ":deviceNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "computerId",
+                  "description": "(Required) The id of a single computer."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceName",
+                  "description": "(Required) The device name of a connected scale."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "deviceNumber",
+                  "description": "(Required) The device number of a connected scale."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b87e7013-61d9-46e6-99c2-eeadfe547db4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computer",
+                    ":computerId",
+                    "scale",
+                    ":deviceName",
+                    ":deviceNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "computerId",
+                      "description": "(Required) The id of a single computer."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceName",
+                      "description": "(Required) The device name of a connected scale."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "deviceNumber",
+                      "description": "(Required) The device number of a connected scale."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mass\": [\n    1153,\n    4249\n  ],\n  \"deviceName\": \"string\",\n  \"deviceNum\": 8900,\n  \"computerId\": 7297,\n  \"vendor\": \"string\",\n  \"product\": \"string\",\n  \"count\": 2138,\n  \"measurement\": {},\n  \"clientReportedCreateTimestamp\": \"2022-02-10T15:43:21.109Z\",\n  \"ntpOffset\": 8848,\n  \"ageOfData\": 4414\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printnode.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7a3c38a8-98d3-4fb9-a78b-a20fa7b5e3d9",
+    "name": "PrintNode Account Scales API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.\n\nContact Support:\n Name: PrintNode Support",
+      "type": "text/plain"
+    }
+  }
+}

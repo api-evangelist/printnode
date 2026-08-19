@@ -1,0 +1,340 @@
+{
+  "item": [
+    {
+      "id": "a590e310-abbd-4d33-a376-c09476d613b9",
+      "name": "Printers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c00112ca-c497-4e6a-b614-f699d6a28740",
+          "name": "List all printers attached to the account.",
+          "request": {
+            "name": "List all printers attached to the account.",
+            "description": {},
+            "url": {
+              "path": [
+                "printers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of rows returned. Default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>",
+                  "description": "Return records whose id is after this value, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "dir",
+                  "value": "desc",
+                  "description": "Ordering of returned records, asc or desc. Default is desc."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0490fc46-5391-4c5b-baad-b39c2c7d8ccf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dir",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9141,\n    \"computer\": {\n      \"id\": 9749,\n      \"name\": \"string\",\n      \"inet\": \"string\",\n      \"inet6\": \"string\",\n      \"hostname\": \"string\",\n      \"version\": \"string\",\n      \"jre\": \"string\",\n      \"createTimestamp\": \"1997-09-03T11:33:30.960Z\",\n      \"state\": \"string\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"capabilities\": {},\n    \"default\": true,\n    \"createTimestamp\": \"1980-05-30T01:26:41.433Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 3522,\n    \"computer\": {\n      \"id\": 804,\n      \"name\": \"string\",\n      \"inet\": \"string\",\n      \"inet6\": \"string\",\n      \"hostname\": \"string\",\n      \"version\": \"string\",\n      \"jre\": \"string\",\n      \"createTimestamp\": \"1989-01-03T00:54:17.562Z\",\n      \"state\": \"string\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"capabilities\": {},\n    \"default\": false,\n    \"createTimestamp\": \"2013-09-09T07:38:49.850Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dd0ae32-250e-417d-98b2-d828852b053d",
+          "name": "Return the printers matching the supplied printer set.",
+          "request": {
+            "name": "Return the printers matching the supplied printer set.",
+            "description": {},
+            "url": {
+              "path": [
+                "printers",
+                ":printerSet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "printerSet",
+                  "description": "(Required) A set of printer ids, e.g. 123 or 123,456 or a range 100-200."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06670669-ab2f-4f73-8119-496bc80d472f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printers",
+                    ":printerSet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "printerSet",
+                      "description": "(Required) A set of printer ids, e.g. 123 or 123,456 or a range 100-200."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9141,\n    \"computer\": {\n      \"id\": 9749,\n      \"name\": \"string\",\n      \"inet\": \"string\",\n      \"inet6\": \"string\",\n      \"hostname\": \"string\",\n      \"version\": \"string\",\n      \"jre\": \"string\",\n      \"createTimestamp\": \"1997-09-03T11:33:30.960Z\",\n      \"state\": \"string\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"capabilities\": {},\n    \"default\": true,\n    \"createTimestamp\": \"1980-05-30T01:26:41.433Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 3522,\n    \"computer\": {\n      \"id\": 804,\n      \"name\": \"string\",\n      \"inet\": \"string\",\n      \"inet6\": \"string\",\n      \"hostname\": \"string\",\n      \"version\": \"string\",\n      \"jre\": \"string\",\n      \"createTimestamp\": \"1989-01-03T00:54:17.562Z\",\n      \"state\": \"string\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"capabilities\": {},\n    \"default\": false,\n    \"createTimestamp\": \"2013-09-09T07:38:49.850Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70539bf2-cb84-4bba-8cfc-db58ad8df883",
+          "name": "List printers attached to the given set of computers.",
+          "request": {
+            "name": "List printers attached to the given set of computers.",
+            "description": {},
+            "url": {
+              "path": [
+                "computers",
+                ":computerSet",
+                "printers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "computerSet",
+                  "description": "(Required) A set of computer ids, e.g. 123 or 123,456 or a range 100-200."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4a37bb7-4de8-416a-8a02-b788aaeca69d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerSet",
+                    "printers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerSet",
+                      "description": "(Required) A set of computer ids, e.g. 123 or 123,456 or a range 100-200."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9141,\n    \"computer\": {\n      \"id\": 9749,\n      \"name\": \"string\",\n      \"inet\": \"string\",\n      \"inet6\": \"string\",\n      \"hostname\": \"string\",\n      \"version\": \"string\",\n      \"jre\": \"string\",\n      \"createTimestamp\": \"1997-09-03T11:33:30.960Z\",\n      \"state\": \"string\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"capabilities\": {},\n    \"default\": true,\n    \"createTimestamp\": \"1980-05-30T01:26:41.433Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 3522,\n    \"computer\": {\n      \"id\": 804,\n      \"name\": \"string\",\n      \"inet\": \"string\",\n      \"inet6\": \"string\",\n      \"hostname\": \"string\",\n      \"version\": \"string\",\n      \"jre\": \"string\",\n      \"createTimestamp\": \"1989-01-03T00:54:17.562Z\",\n      \"state\": \"string\"\n    },\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"capabilities\": {},\n    \"default\": false,\n    \"createTimestamp\": \"2013-09-09T07:38:49.850Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printnode.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94f36918-4bfa-4332-8247-c2b6f1717c64",
+    "name": "PrintNode Account Printers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.\n\nContact Support:\n Name: PrintNode Support",
+      "type": "text/plain"
+    }
+  }
+}

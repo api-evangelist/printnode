@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "PrintNode Account API Keys API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View an API key by its description (Integrator accounts only).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printnode.com/account/apikey/:description",
+            "params": [
+              {
+                "name": "description",
+                "value": "",
+                "type": "path",
+                "description": "The description identifying the API key."
+              }
+            ]
+          },
+          "docs": "View an API key by its description (Integrator accounts only)."
+        },
+        {
+          "info": {
+            "name": "Create an API key with the given description.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printnode.com/account/apikey/:description",
+            "params": [
+              {
+                "name": "description",
+                "value": "",
+                "type": "path",
+                "description": "The description identifying the API key."
+              }
+            ]
+          },
+          "docs": "Create an API key with the given description."
+        },
+        {
+          "info": {
+            "name": "Delete the API key with the given description.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printnode.com/account/apikey/:description",
+            "params": [
+              {
+                "name": "description",
+                "value": "",
+                "type": "path",
+                "description": "The description identifying the API key."
+              }
+            ]
+          },
+          "docs": "Delete the API key with the given description."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

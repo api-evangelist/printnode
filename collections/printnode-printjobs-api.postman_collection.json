@@ -1,0 +1,503 @@
+{
+  "item": [
+    {
+      "id": "144de306-e1b7-4390-ba05-f87e62e7257c",
+      "name": "PrintJobs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4c185f1-d2a7-43de-b749-e6323c533729",
+          "name": "List print jobs associated with the account.",
+          "request": {
+            "name": "List print jobs associated with the account.",
+            "description": {},
+            "url": {
+              "path": [
+                "printjobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of rows returned. Default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>",
+                  "description": "Return records whose id is after this value, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "dir",
+                  "value": "desc",
+                  "description": "Ordering of returned records, asc or desc. Default is desc."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "731bf199-24f0-4a8d-b03f-aa53cfbe5368",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printjobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dir",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1314,\n    \"printer\": {\n      \"id\": 5013,\n      \"computer\": {\n        \"id\": 6900,\n        \"name\": \"string\",\n        \"inet\": \"string\",\n        \"inet6\": \"string\",\n        \"hostname\": \"string\",\n        \"version\": \"string\",\n        \"jre\": \"string\",\n        \"createTimestamp\": \"2006-11-03T07:40:59.926Z\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"capabilities\": {},\n      \"default\": true,\n      \"createTimestamp\": \"2021-12-31T15:04:51.252Z\",\n      \"state\": \"string\"\n    },\n    \"title\": \"string\",\n    \"contentType\": \"string\",\n    \"source\": \"string\",\n    \"expireAt\": \"2011-04-17T15:44:31.679Z\",\n    \"createTimestamp\": \"1968-12-27T16:39:47.785Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 9447,\n    \"printer\": {\n      \"id\": 3748,\n      \"computer\": {\n        \"id\": 6516,\n        \"name\": \"string\",\n        \"inet\": \"string\",\n        \"inet6\": \"string\",\n        \"hostname\": \"string\",\n        \"version\": \"string\",\n        \"jre\": \"string\",\n        \"createTimestamp\": \"2023-01-11T21:17:54.332Z\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"capabilities\": {},\n      \"default\": false,\n      \"createTimestamp\": \"1966-12-27T07:38:31.501Z\",\n      \"state\": \"string\"\n    },\n    \"title\": \"string\",\n    \"contentType\": \"string\",\n    \"source\": \"string\",\n    \"expireAt\": \"1959-09-12T04:54:30.507Z\",\n    \"createTimestamp\": \"1949-07-13T21:25:42.304Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "455849d9-fedc-418e-a3bf-f3ef1723e94a",
+          "name": "Submit a print job to a printer.",
+          "request": {
+            "name": "Submit a print job to a printer.",
+            "description": {},
+            "url": {
+              "path": [
+                "printjobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"printerId\": \"<integer>\",\n  \"contentType\": \"<string>\",\n  \"content\": \"<string>\",\n  \"title\": \"<string>\",\n  \"source\": \"<string>\",\n  \"options\": \"<object>\",\n  \"expireAfter\": \"<integer>\",\n  \"qty\": \"<integer>\",\n  \"authentication\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "638e4785-9e1d-43a2-8675-10789eecbd4a",
+              "name": "Created. Returns the new print job id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printjobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"printerId\": \"<integer>\",\n  \"contentType\": \"<string>\",\n  \"content\": \"<string>\",\n  \"title\": \"<string>\",\n  \"source\": \"<string>\",\n  \"options\": \"<object>\",\n  \"expireAfter\": \"<integer>\",\n  \"qty\": \"<integer>\",\n  \"authentication\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "4240",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9ac540-c8df-465b-ae40-c0e54a889746",
+          "name": "Return the print jobs matching the supplied print job set.",
+          "request": {
+            "name": "Return the print jobs matching the supplied print job set.",
+            "description": {},
+            "url": {
+              "path": [
+                "printjobs",
+                ":printJobSet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "printJobSet",
+                  "description": "(Required) A set of print job ids, e.g. 123 or 123,456 or a range 100-200."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e982424-1aa6-4b0b-bf3e-53cf90996672",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printjobs",
+                    ":printJobSet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "printJobSet",
+                      "description": "(Required) A set of print job ids, e.g. 123 or 123,456 or a range 100-200."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1314,\n    \"printer\": {\n      \"id\": 5013,\n      \"computer\": {\n        \"id\": 6900,\n        \"name\": \"string\",\n        \"inet\": \"string\",\n        \"inet6\": \"string\",\n        \"hostname\": \"string\",\n        \"version\": \"string\",\n        \"jre\": \"string\",\n        \"createTimestamp\": \"2006-11-03T07:40:59.926Z\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"capabilities\": {},\n      \"default\": true,\n      \"createTimestamp\": \"2021-12-31T15:04:51.252Z\",\n      \"state\": \"string\"\n    },\n    \"title\": \"string\",\n    \"contentType\": \"string\",\n    \"source\": \"string\",\n    \"expireAt\": \"2011-04-17T15:44:31.679Z\",\n    \"createTimestamp\": \"1968-12-27T16:39:47.785Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 9447,\n    \"printer\": {\n      \"id\": 3748,\n      \"computer\": {\n        \"id\": 6516,\n        \"name\": \"string\",\n        \"inet\": \"string\",\n        \"inet6\": \"string\",\n        \"hostname\": \"string\",\n        \"version\": \"string\",\n        \"jre\": \"string\",\n        \"createTimestamp\": \"2023-01-11T21:17:54.332Z\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"capabilities\": {},\n      \"default\": false,\n      \"createTimestamp\": \"1966-12-27T07:38:31.501Z\",\n      \"state\": \"string\"\n    },\n    \"title\": \"string\",\n    \"contentType\": \"string\",\n    \"source\": \"string\",\n    \"expireAt\": \"1959-09-12T04:54:30.507Z\",\n    \"createTimestamp\": \"1949-07-13T21:25:42.304Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0b427e1-90a8-4f6b-a265-5e9c76512955",
+          "name": "Return the state change history for print jobs on the account.",
+          "request": {
+            "name": "Return the state change history for print jobs on the account.",
+            "description": {},
+            "url": {
+              "path": [
+                "printjobs",
+                "states"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db9e703a-0cc5-47da-807f-724b33ae6d83",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printjobs",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "652ab081-e8c8-4691-9464-227179787f47",
+          "name": "List the print jobs sent to the given set of printers.",
+          "request": {
+            "name": "List the print jobs sent to the given set of printers.",
+            "description": {},
+            "url": {
+              "path": [
+                "printers",
+                ":printerSet",
+                "printjobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "printerSet",
+                  "description": "(Required) A set of printer ids, e.g. 123 or 123,456 or a range 100-200."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e5ceebf-e6cf-44dc-89d4-cd0ae0990cf7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "printers",
+                    ":printerSet",
+                    "printjobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "printerSet",
+                      "description": "(Required) A set of printer ids, e.g. 123 or 123,456 or a range 100-200."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1314,\n    \"printer\": {\n      \"id\": 5013,\n      \"computer\": {\n        \"id\": 6900,\n        \"name\": \"string\",\n        \"inet\": \"string\",\n        \"inet6\": \"string\",\n        \"hostname\": \"string\",\n        \"version\": \"string\",\n        \"jre\": \"string\",\n        \"createTimestamp\": \"2006-11-03T07:40:59.926Z\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"capabilities\": {},\n      \"default\": true,\n      \"createTimestamp\": \"2021-12-31T15:04:51.252Z\",\n      \"state\": \"string\"\n    },\n    \"title\": \"string\",\n    \"contentType\": \"string\",\n    \"source\": \"string\",\n    \"expireAt\": \"2011-04-17T15:44:31.679Z\",\n    \"createTimestamp\": \"1968-12-27T16:39:47.785Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 9447,\n    \"printer\": {\n      \"id\": 3748,\n      \"computer\": {\n        \"id\": 6516,\n        \"name\": \"string\",\n        \"inet\": \"string\",\n        \"inet6\": \"string\",\n        \"hostname\": \"string\",\n        \"version\": \"string\",\n        \"jre\": \"string\",\n        \"createTimestamp\": \"2023-01-11T21:17:54.332Z\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"capabilities\": {},\n      \"default\": false,\n      \"createTimestamp\": \"1966-12-27T07:38:31.501Z\",\n      \"state\": \"string\"\n    },\n    \"title\": \"string\",\n    \"contentType\": \"string\",\n    \"source\": \"string\",\n    \"expireAt\": \"1959-09-12T04:54:30.507Z\",\n    \"createTimestamp\": \"1949-07-13T21:25:42.304Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printnode.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0647a33c-66a7-4940-a127-7c4d0495c686",
+    "name": "PrintNode Account PrintJobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.\n\nContact Support:\n Name: PrintNode Support",
+      "type": "text/plain"
+    }
+  }
+}

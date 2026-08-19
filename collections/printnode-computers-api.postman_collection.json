@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "64472668-59f2-4ed2-9c72-dd10b4f73bff",
+      "name": "Computers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c8afac0-7077-4a42-b4a8-8ce1808c7985",
+          "name": "List all computers connected to the account.",
+          "request": {
+            "name": "List all computers connected to the account.",
+            "description": {},
+            "url": {
+              "path": [
+                "computers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of rows returned. Default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<integer>",
+                  "description": "Return records whose id is after this value, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "dir",
+                  "value": "desc",
+                  "description": "Ordering of returned records, asc or desc. Default is desc."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "241fb09b-f805-4272-8f91-00f481301ced",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dir",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3708,\n    \"name\": \"string\",\n    \"inet\": \"string\",\n    \"inet6\": \"string\",\n    \"hostname\": \"string\",\n    \"version\": \"string\",\n    \"jre\": \"string\",\n    \"createTimestamp\": \"2001-01-10T21:24:29.085Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 2283,\n    \"name\": \"string\",\n    \"inet\": \"string\",\n    \"inet6\": \"string\",\n    \"hostname\": \"string\",\n    \"version\": \"string\",\n    \"jre\": \"string\",\n    \"createTimestamp\": \"1976-12-27T06:04:50.049Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84ecff1a-be1c-4dc8-bc9c-703e6fde143c",
+          "name": "Return the computers matching the supplied computer set.",
+          "request": {
+            "name": "Return the computers matching the supplied computer set.",
+            "description": {},
+            "url": {
+              "path": [
+                "computers",
+                ":computerSet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "computerSet",
+                  "description": "(Required) A set of computer ids, e.g. 123 or 123,456 or a range 100-200."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7d0fb36-fb32-402a-8387-dd13d84591d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computers",
+                    ":computerSet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "computerSet",
+                      "description": "(Required) A set of computer ids, e.g. 123 or 123,456 or a range 100-200."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3708,\n    \"name\": \"string\",\n    \"inet\": \"string\",\n    \"inet6\": \"string\",\n    \"hostname\": \"string\",\n    \"version\": \"string\",\n    \"jre\": \"string\",\n    \"createTimestamp\": \"2001-01-10T21:24:29.085Z\",\n    \"state\": \"string\"\n  },\n  {\n    \"id\": 2283,\n    \"name\": \"string\",\n    \"inet\": \"string\",\n    \"inet6\": \"string\",\n    \"hostname\": \"string\",\n    \"version\": \"string\",\n    \"jre\": \"string\",\n    \"createTimestamp\": \"1976-12-27T06:04:50.049Z\",\n    \"state\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printnode.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "38ed64bb-e980-430e-a784-aa86b05964fa",
+    "name": "PrintNode Account Computers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.\n\nContact Support:\n Name: PrintNode Support",
+      "type": "text/plain"
+    }
+  }
+}
