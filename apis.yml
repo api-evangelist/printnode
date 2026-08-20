@@ -51,6 +51,8 @@ apis:
   humanURL: https://www.printnode.com/en/docs/api/curl
   baseURL: https://api.printnode.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -107,6 +109,8 @@ apis:
   humanURL: https://www.printnode.com/en/docs/api/curl
   baseURL: https://api.printnode.com
   tags:
+  - Print Jobs
+  tags_raw:
   - PrintJobs
   properties:
   - type: OpenAPI
@@ -149,6 +153,8 @@ apis:
   humanURL: https://www.printnode.com/en/docs/api/curl
   baseURL: https://api.printnode.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
