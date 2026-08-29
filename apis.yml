@@ -7,6 +7,18 @@ description: PrintNode is a cloud and remote printing service that lets web and 
   on a remote computer. Its REST API at https://api.printnode.com covers accounts,
   computers, printers, print jobs, scales, child-account/API-key management, and webhooks,
   using HTTP Basic authentication with an API key.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
