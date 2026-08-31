@@ -121,7 +121,7 @@ apis:
   humanURL: https://www.printnode.com/en/docs/api/curl
   baseURL: https://api.printnode.com
   tags:
-  - Print Jobs
+  - PrintJobs
   tags_raw:
   - PrintJobs
   properties:
