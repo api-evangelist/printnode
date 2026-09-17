@@ -116,22 +116,6 @@ apis:
     url: https://www.printnode.com/en/docs/api/curl
   - type: APIReference
     url: https://www.printnode.com/en/docs/api/curl
-- aid: printnode:printnode-printjobs-api
-  name: PrintNode PrintJobs API
-  description: The PrintJobs API from PrintNode — 4 operation(s) for printjobs.
-  humanURL: https://www.printnode.com/en/docs/api/curl
-  baseURL: https://api.printnode.com
-  tags:
-  - Print Jobs
-  tags_raw:
-  - PrintJobs
-  properties:
-  - type: OpenAPI
-    url: openapi/printnode-printjobs-api-openapi.yml
-  - type: Documentation
-    url: https://www.printnode.com/en/docs/api/curl
-  - type: APIReference
-    url: https://www.printnode.com/en/docs/api/curl
 - aid: printnode:printnode-scales-api
   name: PrintNode Scales API
   description: The Scales API from PrintNode — 3 operation(s) for scales.
@@ -172,6 +156,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/printnode-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://www.printnode.com/en/docs/api/curl
+  - type: APIReference
+    url: https://www.printnode.com/en/docs/api/curl
+- aid: printnode:printnode-print-jobs-api
+  name: PrintNode Print Jobs API
+  description: The Print Jobs API from PrintNode — 4 operation(s) for print jobs.
+  humanURL: https://www.printnode.com/en/docs/api/curl
+  baseURL: https://api.printnode.com
+  tags:
+  - Print Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/printnode-print-jobs-api-openapi.yml
   - type: Documentation
     url: https://www.printnode.com/en/docs/api/curl
   - type: APIReference
