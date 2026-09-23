@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account Computers API
+  title: PrintNode Computers API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getComputers
       tags:
       - Computers
-      summary: List all computers connected to the account.
+      summary: List all computers connected to the account
       parameters:
       - $ref: '#/components/parameters/Limit'
       - $ref: '#/components/parameters/After'
@@ -38,7 +38,7 @@ paths:
       operationId: getComputerSet
       tags:
       - Computers
-      summary: Return the computers matching the supplied computer set.
+      summary: Return the computers matching the supplied computer set
       parameters:
       - $ref: '#/components/parameters/ComputerSet'
       responses:
@@ -71,13 +71,6 @@ components:
       schema:
         type: integer
         default: 100
-    After:
-      name: after
-      in: query
-      description: Return records whose id is after this value, for pagination.
-      required: false
-      schema:
-        type: integer
     ComputerSet:
       name: computerSet
       in: path
@@ -85,6 +78,13 @@ components:
       required: true
       schema:
         type: string
+    After:
+      name: after
+      in: query
+      description: Return records whose id is after this value, for pagination.
+      required: false
+      schema:
+        type: integer
   schemas:
     Computer:
       type: object
@@ -94,20 +94,25 @@ components:
         name:
           type: string
         inet:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         inet6:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         hostname:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         version:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         jre:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         createTimestamp:
           type: string
           format: date-time

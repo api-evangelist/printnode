@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account Utility API
+  title: PrintNode Utility API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: ping
       tags:
       - Utility
-      summary: Health check endpoint that confirms the API is reachable.
+      summary: Health check endpoint that confirms the API is reachable
       responses:
         '200':
           description: OK
@@ -28,7 +28,7 @@ paths:
       operationId: noop
       tags:
       - Utility
-      summary: No-operation endpoint useful for testing authentication.
+      summary: No-operation endpoint useful for testing authentication
       responses:
         '200':
           description: OK

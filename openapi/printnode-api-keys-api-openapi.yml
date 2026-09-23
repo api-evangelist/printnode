@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account API Keys API
+  title: PrintNode API Keys API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getApiKey
       tags:
       - API Keys
-      summary: View an API key by its description (Integrator accounts only).
+      summary: View an API key by its description (Integrator accounts only)
       parameters:
       - $ref: '#/components/parameters/ApiKeyDescription'
       responses:
@@ -29,7 +29,7 @@ paths:
       operationId: createApiKey
       tags:
       - API Keys
-      summary: Create an API key with the given description.
+      summary: Create an API key with the given description
       parameters:
       - $ref: '#/components/parameters/ApiKeyDescription'
       responses:
@@ -39,7 +39,7 @@ paths:
       operationId: deleteApiKey
       tags:
       - API Keys
-      summary: Delete the API key with the given description.
+      summary: Delete the API key with the given description
       parameters:
       - $ref: '#/components/parameters/ApiKeyDescription'
       responses:

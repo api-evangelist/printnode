@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account Scales API
+  title: PrintNode Scales API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getScales
       tags:
       - Scales
-      summary: List the scales connected to the given computer.
+      summary: List the scales connected to the given computer
       parameters:
       - $ref: '#/components/parameters/ComputerId'
       responses:
@@ -36,7 +36,7 @@ paths:
       operationId: getScalesByDeviceName
       tags:
       - Scales
-      summary: List scale measurements for a named device on a computer.
+      summary: List scale measurements for a named device on a computer
       parameters:
       - $ref: '#/components/parameters/ComputerId'
       - $ref: '#/components/parameters/DeviceName'
@@ -54,7 +54,7 @@ paths:
       operationId: getScale
       tags:
       - Scales
-      summary: Return a single scale measurement for a named device and number.
+      summary: Return a single scale measurement for a named device and number
       parameters:
       - $ref: '#/components/parameters/ComputerId'
       - $ref: '#/components/parameters/DeviceName'
@@ -74,8 +74,9 @@ components:
         mass:
           type: array
           items:
-            type: integer
-            nullable: true
+            type:
+            - integer
+            - 'null'
           description: Measured mass as [grams, micrograms].
         deviceName:
           type: string
@@ -84,26 +85,38 @@ components:
         computerId:
           type: integer
         vendor:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         product:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         count:
           type: integer
         measurement:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         clientReportedCreateTimestamp:
           type: string
           format: date-time
         ntpOffset:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         ageOfData:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
   parameters:
+    ComputerId:
+      name: computerId
+      in: path
+      description: The id of a single computer.
+      required: true
+      schema:
+        type: integer
     DeviceNumber:
       name: deviceNumber
       in: path
@@ -118,13 +131,6 @@ components:
       required: true
       schema:
         type: string
-    ComputerId:
-      name: computerId
-      in: path
-      description: The id of a single computer.
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     apiKeyBasicAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account Webhooks API
+  title: PrintNode Webhooks API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getWebhooks
       tags:
       - Webhooks
-      summary: View the webhooks registered on the account.
+      summary: View the webhooks registered on the account
       responses:
         '200':
           description: OK
@@ -33,7 +33,7 @@ paths:
       operationId: createWebhook
       tags:
       - Webhooks
-      summary: Register a new webhook on the account.
+      summary: Register a new webhook on the account
       requestBody:
         required: true
         content:
@@ -47,7 +47,7 @@ paths:
       operationId: modifyWebhook
       tags:
       - Webhooks
-      summary: Modify an existing webhook.
+      summary: Modify an existing webhook
       requestBody:
         required: true
         content:
@@ -61,7 +61,7 @@ paths:
       operationId: deleteWebhook
       tags:
       - Webhooks
-      summary: Delete a webhook from the account.
+      summary: Delete a webhook from the account
       responses:
         '200':
           description: OK

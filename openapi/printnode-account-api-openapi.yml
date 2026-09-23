@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: PrintNode Account API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
@@ -19,7 +19,7 @@ paths:
       operationId: whoAmI
       tags:
       - Account
-      summary: Returns the Account object for the currently authenticated account.
+      summary: Returns the Account object for the currently authenticated account
       responses:
         '200':
           description: OK
@@ -32,7 +32,7 @@ paths:
       operationId: createAccount
       tags:
       - Account
-      summary: Create a child account (Integrator accounts only).
+      summary: Create a child account (Integrator accounts only)
       requestBody:
         required: true
         content:
@@ -46,7 +46,7 @@ paths:
       operationId: modifyAccount
       tags:
       - Account
-      summary: Modify the authenticated or controlled account.
+      summary: Modify the authenticated or controlled account
       requestBody:
         required: true
         content:
@@ -60,7 +60,7 @@ paths:
       operationId: deleteAccount
       tags:
       - Account
-      summary: Delete the controlled child account.
+      summary: Delete the controlled child account
       responses:
         '200':
           description: OK
@@ -69,7 +69,7 @@ paths:
       operationId: getControllableAccounts
       tags:
       - Account
-      summary: List the child accounts this Integrator account can control.
+      summary: List the child accounts this Integrator account can control
       responses:
         '200':
           description: OK
@@ -78,7 +78,7 @@ paths:
       operationId: getAccountTag
       tags:
       - Account
-      summary: View a named tag stored against the account.
+      summary: View a named tag stored against the account
       parameters:
       - $ref: '#/components/parameters/TagName'
       responses:
@@ -88,7 +88,7 @@ paths:
       operationId: setAccountTag
       tags:
       - Account
-      summary: Create or update a named tag stored against the account.
+      summary: Create or update a named tag stored against the account
       parameters:
       - $ref: '#/components/parameters/TagName'
       requestBody:
@@ -104,7 +104,7 @@ paths:
       operationId: deleteAccountTag
       tags:
       - Account
-      summary: Delete a named tag stored against the account.
+      summary: Delete a named tag stored against the account
       parameters:
       - $ref: '#/components/parameters/TagName'
       responses:
@@ -112,45 +112,6 @@ paths:
           description: OK
 components:
   schemas:
-    Account:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Unique account identifier.
-        firstname:
-          type: string
-        lastname:
-          type: string
-        email:
-          type: string
-        canCreateSubAccounts:
-          type: boolean
-        creatorEmail:
-          type: string
-          nullable: true
-        creatorRef:
-          type: string
-          nullable: true
-        credits:
-          type: integer
-          nullable: true
-        numComputers:
-          type: integer
-        totalPrints:
-          type: integer
-        versions:
-          type: array
-          items:
-            type: string
-        connected:
-          type: array
-          items:
-            type: integer
-        permissions:
-          type: array
-          items:
-            type: string
     CreateAccountRequest:
       type: object
       properties:
@@ -173,6 +134,48 @@ components:
             type: string
         Tags:
           type: object
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique account identifier.
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        canCreateSubAccounts:
+          type: boolean
+        creatorEmail:
+          type:
+          - string
+          - 'null'
+        creatorRef:
+          type:
+          - string
+          - 'null'
+        credits:
+          type:
+          - integer
+          - 'null'
+        numComputers:
+          type: integer
+        totalPrints:
+          type: integer
+        versions:
+          type: array
+          items:
+            type: string
+        connected:
+          type: array
+          items:
+            type: integer
+        permissions:
+          type: array
+          items:
+            type: string
   parameters:
     TagName:
       name: name

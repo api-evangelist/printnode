@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account PrintJobs API
+  title: PrintNode Print Jobs API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -12,14 +12,14 @@ servers:
 security:
 - apiKeyBasicAuth: []
 tags:
-- name: PrintJobs
+- name: Print Jobs
 paths:
   /printjobs:
     get:
       operationId: getPrintJobs
       tags:
-      - PrintJobs
-      summary: List print jobs associated with the account.
+      - Print Jobs
+      summary: List print jobs associated with the account
       parameters:
       - $ref: '#/components/parameters/Limit'
       - $ref: '#/components/parameters/After'
@@ -36,8 +36,8 @@ paths:
     post:
       operationId: createPrintJob
       tags:
-      - PrintJobs
-      summary: Submit a print job to a printer.
+      - Print Jobs
+      summary: Submit a print job to a printer
       requestBody:
         required: true
         content:
@@ -55,8 +55,8 @@ paths:
     get:
       operationId: getPrintJobSet
       tags:
-      - PrintJobs
-      summary: Return the print jobs matching the supplied print job set.
+      - Print Jobs
+      summary: Return the print jobs matching the supplied print job set
       parameters:
       - $ref: '#/components/parameters/PrintJobSet'
       responses:
@@ -72,8 +72,8 @@ paths:
     get:
       operationId: getPrintJobStates
       tags:
-      - PrintJobs
-      summary: Return the state change history for print jobs on the account.
+      - Print Jobs
+      summary: Return the state change history for print jobs on the account
       responses:
         '200':
           description: OK
@@ -81,8 +81,8 @@ paths:
     get:
       operationId: getPrintJobsByPrinter
       tags:
-      - PrintJobs
-      summary: List the print jobs sent to the given set of printers.
+      - Print Jobs
+      summary: List the print jobs sent to the given set of printers
       parameters:
       - $ref: '#/components/parameters/PrinterSet'
       responses:
@@ -96,6 +96,13 @@ paths:
                   $ref: '#/components/schemas/PrintJob'
 components:
   parameters:
+    PrintJobSet:
+      name: printJobSet
+      in: path
+      description: A set of print job ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
+      schema:
+        type: string
     Dir:
       name: dir
       in: query
@@ -107,13 +114,6 @@ components:
         - asc
         - desc
         default: desc
-    PrinterSet:
-      name: printerSet
-      in: path
-      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
-      required: true
-      schema:
-        type: string
     Limit:
       name: limit
       in: query
@@ -122,10 +122,10 @@ components:
       schema:
         type: integer
         default: 100
-    PrintJobSet:
-      name: printJobSet
+    PrinterSet:
+      name: printerSet
       in: path
-      description: A set of print job ids, e.g. 123 or 123,456 or a range 100-200.
+      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
       required: true
       schema:
         type: string
@@ -176,34 +176,6 @@ components:
         authentication:
           type: object
           description: Optional HTTP credentials for fetching a content URI.
-    Computer:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        inet:
-          type: string
-          nullable: true
-        inet6:
-          type: string
-          nullable: true
-        hostname:
-          type: string
-          nullable: true
-        version:
-          type: string
-          nullable: true
-        jre:
-          type: string
-          nullable: true
-        createTimestamp:
-          type: string
-          format: date-time
-        state:
-          type: string
-          description: Connection state, e.g. connected or disconnected.
     Printer:
       type: object
       properties:
@@ -216,8 +188,9 @@ components:
         description:
           type: string
         capabilities:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         default:
           type: boolean
         createTimestamp:
@@ -240,14 +213,48 @@ components:
         source:
           type: string
         expireAt:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         createTimestamp:
           type: string
           format: date-time
         state:
           type: string
+    Computer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        inet:
+          type:
+          - string
+          - 'null'
+        inet6:
+          type:
+          - string
+          - 'null'
+        hostname:
+          type:
+          - string
+          - 'null'
+        version:
+          type:
+          - string
+          - 'null'
+        jre:
+          type:
+          - string
+          - 'null'
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          description: Connection state, e.g. connected or disconnected.
   securitySchemes:
     apiKeyBasicAuth:
       type: http

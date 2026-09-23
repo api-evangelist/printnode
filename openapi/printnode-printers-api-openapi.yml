@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: PrintNode Account Printers API
+  title: PrintNode Printers API
   description: Specification of the PrintNode cloud and remote printing API. PrintNode lets web and server applications print to physical printers through the PrintNode Client running on a remote computer. All requests use HTTP Basic authentication with the API key supplied as the username and an empty password.
   termsOfService: https://www.printnode.com/en/terms
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getPrinters
       tags:
       - Printers
-      summary: List all printers attached to the account.
+      summary: List all printers attached to the account
       parameters:
       - $ref: '#/components/parameters/Limit'
       - $ref: '#/components/parameters/After'
@@ -38,7 +38,7 @@ paths:
       operationId: getPrinterSet
       tags:
       - Printers
-      summary: Return the printers matching the supplied printer set.
+      summary: Return the printers matching the supplied printer set
       parameters:
       - $ref: '#/components/parameters/PrinterSet'
       responses:
@@ -55,7 +55,7 @@ paths:
       operationId: getPrintersByComputer
       tags:
       - Printers
-      summary: List printers attached to the given set of computers.
+      summary: List printers attached to the given set of computers
       parameters:
       - $ref: '#/components/parameters/ComputerSet'
       responses:
@@ -80,13 +80,6 @@ components:
         - asc
         - desc
         default: desc
-    PrinterSet:
-      name: printerSet
-      in: path
-      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
-      required: true
-      schema:
-        type: string
     Limit:
       name: limit
       in: query
@@ -95,13 +88,13 @@ components:
       schema:
         type: integer
         default: 100
-    After:
-      name: after
-      in: query
-      description: Return records whose id is after this value, for pagination.
-      required: false
+    PrinterSet:
+      name: printerSet
+      in: path
+      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
       schema:
-        type: integer
+        type: string
     ComputerSet:
       name: computerSet
       in: path
@@ -109,6 +102,13 @@ components:
       required: true
       schema:
         type: string
+    After:
+      name: after
+      in: query
+      description: Return records whose id is after this value, for pagination.
+      required: false
+      schema:
+        type: integer
   schemas:
     Computer:
       type: object
@@ -118,20 +118,25 @@ components:
         name:
           type: string
         inet:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         inet6:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         hostname:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         version:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         jre:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         createTimestamp:
           type: string
           format: date-time
@@ -150,8 +155,9 @@ components:
         description:
           type: string
         capabilities:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         default:
           type: boolean
         createTimestamp:
