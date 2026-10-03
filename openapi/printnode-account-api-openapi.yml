@@ -111,6 +111,14 @@ paths:
         '200':
           description: OK
 components:
+  parameters:
+    TagName:
+      name: name
+      in: path
+      description: The name of the account tag.
+      required: true
+      schema:
+        type: string
   schemas:
     CreateAccountRequest:
       type: object
@@ -176,14 +184,6 @@ components:
           type: array
           items:
             type: string
-  parameters:
-    TagName:
-      name: name
-      in: path
-      description: The name of the account tag.
-      required: true
-      schema:
-        type: string
   securitySchemes:
     apiKeyBasicAuth:
       type: http

@@ -96,28 +96,6 @@ paths:
                   $ref: '#/components/schemas/PrintJob'
 components:
   parameters:
-    PrinterSet:
-      name: printerSet
-      in: path
-      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      description: Maximum number of rows returned. Default is 100.
-      required: false
-      schema:
-        type: integer
-        default: 100
-    After:
-      name: after
-      in: query
-      description: Return records whose id is after this value, for pagination.
-      required: false
-      schema:
-        type: integer
     PrintJobSet:
       name: printJobSet
       in: path
@@ -136,6 +114,28 @@ components:
         - asc
         - desc
         default: desc
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of rows returned. Default is 100.
+      required: false
+      schema:
+        type: integer
+        default: 100
+    PrinterSet:
+      name: printerSet
+      in: path
+      description: A set of printer ids, e.g. 123 or 123,456 or a range 100-200.
+      required: true
+      schema:
+        type: string
+    After:
+      name: after
+      in: query
+      description: Return records whose id is after this value, for pagination.
+      required: false
+      schema:
+        type: integer
   schemas:
     CreatePrintJobRequest:
       type: object
@@ -176,29 +176,6 @@ components:
         authentication:
           type: object
           description: Optional HTTP credentials for fetching a content URI.
-    Printer:
-      type: object
-      properties:
-        id:
-          type: integer
-        computer:
-          $ref: '#/components/schemas/Computer'
-        name:
-          type: string
-        description:
-          type: string
-        capabilities:
-          type:
-          - object
-          - 'null'
-        default:
-          type: boolean
-        createTimestamp:
-          type: string
-          format: date-time
-        state:
-          type: string
-          description: Printer state, e.g. online, offline or deleted.
     Computer:
       type: object
       properties:
@@ -232,6 +209,29 @@ components:
         state:
           type: string
           description: Connection state, e.g. connected or disconnected.
+    Printer:
+      type: object
+      properties:
+        id:
+          type: integer
+        computer:
+          $ref: '#/components/schemas/Computer'
+        name:
+          type: string
+        description:
+          type: string
+        capabilities:
+          type:
+          - object
+          - 'null'
+        default:
+          type: boolean
+        createTimestamp:
+          type: string
+          format: date-time
+        state:
+          type: string
+          description: Printer state, e.g. online, offline or deleted.
     PrintJob:
       type: object
       properties:
