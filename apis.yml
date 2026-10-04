@@ -175,6 +175,9 @@ apis:
   - type: APIReference
     url: https://www.printnode.com/en/docs/api/curl
 common:
+- type: CapabilityMap
+  url: capabilities/printnode-capability-edges.yml
+  name: PrintNode Business Capability Map
 - type: AgenticAccess
   url: agentic-access/printnode-agentic-access.yml
 - type: DomainSecurity
