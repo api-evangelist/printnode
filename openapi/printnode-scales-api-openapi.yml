@@ -68,17 +68,17 @@ paths:
                 $ref: '#/components/schemas/Scale'
 components:
   parameters:
-    ComputerId:
-      name: computerId
-      in: path
-      description: The id of a single computer.
-      required: true
-      schema:
-        type: integer
     DeviceNumber:
       name: deviceNumber
       in: path
       description: The device number of a connected scale.
+      required: true
+      schema:
+        type: integer
+    ComputerId:
+      name: computerId
+      in: path
+      description: The id of a single computer.
       required: true
       schema:
         type: integer

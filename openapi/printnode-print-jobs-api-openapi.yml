@@ -103,17 +103,6 @@ components:
       required: true
       schema:
         type: string
-    Dir:
-      name: dir
-      in: query
-      description: Ordering of returned records, asc or desc. Default is desc.
-      required: false
-      schema:
-        type: string
-        enum:
-        - asc
-        - desc
-        default: desc
     Limit:
       name: limit
       in: query
@@ -136,46 +125,18 @@ components:
       required: false
       schema:
         type: integer
+    Dir:
+      name: dir
+      in: query
+      description: Ordering of returned records, asc or desc. Default is desc.
+      required: false
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
   schemas:
-    CreatePrintJobRequest:
-      type: object
-      required:
-      - printerId
-      - contentType
-      - content
-      properties:
-        printerId:
-          type: integer
-          description: The id of the target printer.
-        title:
-          type: string
-          description: Title displayed in the print queue.
-        contentType:
-          type: string
-          description: The content encoding of the job.
-          enum:
-          - pdf_uri
-          - pdf_base64
-          - raw_uri
-          - raw_base64
-        content:
-          type: string
-          description: A URI or base64-encoded payload depending on contentType.
-        source:
-          type: string
-          description: Free-text description of the job origin.
-        options:
-          type: object
-          description: Printer options such as copies, dpi, paper, fit_to_page.
-        expireAfter:
-          type: integer
-          description: Retention period in seconds. Default 1209600.
-        qty:
-          type: integer
-          description: Number of times to deliver the job. Default 1.
-        authentication:
-          type: object
-          description: Optional HTTP credentials for fetching a content URI.
     Computer:
       type: object
       properties:
@@ -255,6 +216,45 @@ components:
           format: date-time
         state:
           type: string
+    CreatePrintJobRequest:
+      type: object
+      required:
+      - printerId
+      - contentType
+      - content
+      properties:
+        printerId:
+          type: integer
+          description: The id of the target printer.
+        title:
+          type: string
+          description: Title displayed in the print queue.
+        contentType:
+          type: string
+          description: The content encoding of the job.
+          enum:
+          - pdf_uri
+          - pdf_base64
+          - raw_uri
+          - raw_base64
+        content:
+          type: string
+          description: A URI or base64-encoded payload depending on contentType.
+        source:
+          type: string
+          description: Free-text description of the job origin.
+        options:
+          type: object
+          description: Printer options such as copies, dpi, paper, fit_to_page.
+        expireAfter:
+          type: integer
+          description: Retention period in seconds. Default 1209600.
+        qty:
+          type: integer
+          description: Number of times to deliver the job. Default 1.
+        authentication:
+          type: object
+          description: Optional HTTP credentials for fetching a content URI.
   securitySchemes:
     apiKeyBasicAuth:
       type: http
