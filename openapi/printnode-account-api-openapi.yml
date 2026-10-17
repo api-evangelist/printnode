@@ -111,15 +111,29 @@ paths:
         '200':
           description: OK
 components:
-  parameters:
-    TagName:
-      name: name
-      in: path
-      description: The name of the account tag.
-      required: true
-      schema:
-        type: string
   schemas:
+    CreateAccountRequest:
+      type: object
+      properties:
+        Account:
+          type: object
+          properties:
+            firstname:
+              type: string
+            lastname:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+            creatorRef:
+              type: string
+        ApiKeys:
+          type: array
+          items:
+            type: string
+        Tags:
+          type: object
     Account:
       type: object
       properties:
@@ -162,28 +176,14 @@ components:
           type: array
           items:
             type: string
-    CreateAccountRequest:
-      type: object
-      properties:
-        Account:
-          type: object
-          properties:
-            firstname:
-              type: string
-            lastname:
-              type: string
-            email:
-              type: string
-            password:
-              type: string
-            creatorRef:
-              type: string
-        ApiKeys:
-          type: array
-          items:
-            type: string
-        Tags:
-          type: object
+  parameters:
+    TagName:
+      name: name
+      in: path
+      description: The name of the account tag.
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apiKeyBasicAuth:
       type: http
