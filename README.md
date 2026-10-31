@@ -1,4 +1,4 @@
-# PrintNode (printnode)
+# PrintNode
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,160 +66,131 @@
 
 PrintNode is a cloud and remote printing service that lets web and server applications print to any physical printer through a lightweight client installed on a remote computer. Its REST API at https://api.printnode.com covers accounts, computers, printers, print jobs, scales, child-account/API-key management, and webhooks, using HTTP Basic authentication with an API key.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/printnode/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/printnode/refs/heads/main/apis.yml)
+**Areas:** Printing · Cloud Printing · Remote Printing · Print Jobs · Hardware
 
-## Tags
+## PrintNode on APIs.io
 
-- Printing
-- Cloud Printing
-- Remote Printing
-- Print Jobs
-- Hardware
+Everything profiled for PrintNode is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/printnode/](https://apis.io/providers/printnode/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (9)
 
-- **Created:** 2026-06-25
-- **Modified:** 2026-06-25
+- [PrintNode Account API](https://apis.io/apis/printnode/printnode-account-api/) — The Account API from PrintNode — 4 operation(s) for account.
+- [PrintNode API Keys API](https://apis.io/apis/printnode/printnode-api-keys-api/) — The API Keys API from PrintNode — 1 operation(s) for api keys.
+- [PrintNode Clients API](https://apis.io/apis/printnode/printnode-clients-api/) — The Clients API from PrintNode — 1 operation(s) for clients.
+- [PrintNode Computers API](https://apis.io/apis/printnode/printnode-computers-api/) — The Computers API from PrintNode — 2 operation(s) for computers.
+- [PrintNode Printers API](https://apis.io/apis/printnode/printnode-printers-api/) — The Printers API from PrintNode — 3 operation(s) for printers.
+- [PrintNode Scales API](https://apis.io/apis/printnode/printnode-scales-api/) — The Scales API from PrintNode — 3 operation(s) for scales.
+- [PrintNode Utility API](https://apis.io/apis/printnode/printnode-utility-api/) — The Utility API from PrintNode — 2 operation(s) for utility.
+- [PrintNode Webhooks API](https://apis.io/apis/printnode/printnode-webhooks-api/) — The Webhooks API from PrintNode — 1 operation(s) for webhooks.
+- [PrintNode Print Jobs API](https://apis.io/apis/printnode/printnode-print-jobs-api/) — The Print Jobs API from PrintNode — 4 operation(s) for print jobs.
 
-## APIs
+### Published properties
 
-### PrintNode Computers API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-List and manage the computers connected to a PrintNode account, each running the PrintNode Client that bridges the cloud API to locally attached printers and devices.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.printnode.com/en/docs/api/curl](https://www.printnode.com/en/docs/api/curl)
-- **Base URL:** `https://api.printnode.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Printnode Agentic Access](https://apis.io/agentic-access/printnode/printnode-agentic-access/)
 
-- Computers
-- Clients
-- Devices
+#### Collections (10)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [API Reference](https://www.printnode.com/en/docs/api/curl)
-- [OpenAPI](openapi/printnode-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printnode.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printnode.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [PrintNode API](https://apis.io/collections/printnode/open-printnode/)
+- [PrintNode Account API](https://apis.io/collections/printnode/open-printnode-account-api/)
+- [PrintNode Account API Keys API](https://apis.io/collections/printnode/open-printnode-api-keys-api/)
+- [PrintNode Account Clients API](https://apis.io/collections/printnode/open-printnode-clients-api/)
+- [PrintNode Account Computers API](https://apis.io/collections/printnode/open-printnode-computers-api/)
+- [PrintNode Account Printers API](https://apis.io/collections/printnode/open-printnode-printers-api/)
+- [PrintNode Account PrintJobs API](https://apis.io/collections/printnode/open-printnode-printjobs-api/)
+- [PrintNode Account Scales API](https://apis.io/collections/printnode/open-printnode-scales-api/)
+- [PrintNode Account Utility API](https://apis.io/collections/printnode/open-printnode-utility-api/)
+- [PrintNode Account Webhooks API](https://apis.io/collections/printnode/open-printnode-webhooks-api/)
 
-### PrintNode Printers API
+#### Security (2)
 
-Discover the printers attached to an account's computers, including printer capabilities, state, and defaults, either across the whole account or scoped to specific computers.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.printnode.com/en/docs/api/curl](https://www.printnode.com/en/docs/api/curl)
-- **Base URL:** `https://api.printnode.com`
+- [Printnode Authentication](https://apis.io/security/printnode/printnode-authentication/)
+- [Printnode Domain Security](https://apis.io/security/printnode/printnode-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Printers
-- Capabilities
-- Devices
+Published plans, tiers and prices.
 
-#### Properties
+- [Printnode Plans Pricing](https://apis.io/plans/printnode/printnode-plans-pricing/)
 
-- [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [API Reference](https://www.printnode.com/en/docs/api/curl)
-- [OpenAPI](openapi/printnode-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printnode.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printnode.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### PrintNode PrintJobs API
+Published request limits.
 
-Submit print jobs to a printer from PDF or raw content (URI or base64), list historical print jobs, inspect their states, and retrieve job state changes across the account or per printer.
+- [Printnode Rate Limits](https://apis.io/rate-limits/printnode/printnode-rate-limits/)
 
-- **Human URL:** [https://www.printnode.com/en/docs/api/curl](https://www.printnode.com/en/docs/api/curl)
-- **Base URL:** `https://api.printnode.com`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Print Jobs
-- Printing
-- PDF
+- [Printnode Finops](https://apis.io/finops/printnode/printnode-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [API Reference](https://www.printnode.com/en/docs/api/curl)
-- [OpenAPI](openapi/printnode-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printnode.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printnode.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### PrintNode Scales API
-
-Read weight measurements from USB scales connected to a computer running the PrintNode Client, supporting point-of-sale and shipping use cases alongside printing.
-
-- **Human URL:** [https://www.printnode.com/en/docs/api/curl](https://www.printnode.com/en/docs/api/curl)
-- **Base URL:** `https://api.printnode.com`
-
-#### Tags
-
-- Scales
-- Weighing
-- Hardware
-
-#### Properties
-
-- [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [API Reference](https://www.printnode.com/en/docs/api/curl)
-- [OpenAPI](openapi/printnode-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printnode.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printnode.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### PrintNode Account and API Keys API
-
-Inspect the authenticated account via whoami, and for Integrator accounts create, modify, and delete child accounts along with their API keys and tags for managed multi-tenant printing.
-
-- **Human URL:** [https://www.printnode.com/en/docs/api/curl](https://www.printnode.com/en/docs/api/curl)
-- **Base URL:** `https://api.printnode.com`
-
-#### Tags
-
-- Account
-- Child Accounts
-- API Keys
-
-#### Properties
-
-- [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [API Reference](https://www.printnode.com/en/docs/api/curl)
-- [OpenAPI](openapi/printnode-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printnode.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printnode.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### PrintNode Webhooks API
-
-Register, view, modify, and delete webhooks that deliver event notifications about account activity such as print job and printer state changes to a configured HTTP endpoint.
-
-- **Human URL:** [https://www.printnode.com/en/docs/api/curl](https://www.printnode.com/en/docs/api/curl)
-- **Base URL:** `https://api.printnode.com`
-
-#### Tags
-
-- Webhooks
-- Notifications
-- Events
-
-#### Properties
-
-- [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [API Reference](https://www.printnode.com/en/docs/api/curl)
-- [OpenAPI](openapi/printnode-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printnode.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printnode.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/PrintNode)
-- [LinkedIn](https://www.linkedin.com/company/printnode)
 - [Website](https://www.printnode.com/)
 - [Documentation](https://www.printnode.com/en/docs/api/curl)
-- [Plans](plans/printnode-plans-pricing.yml)
-- [Rate Limits](rate-limits/printnode-rate-limits.yml)
-- [Fin Ops](finops/printnode-finops.yml)
+- [GitHub](https://github.com/PrintNode)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/printnode/](https://apis.io/providers/printnode/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PrintNode: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/printnode/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
